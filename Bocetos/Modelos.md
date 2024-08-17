@@ -1,4 +1,4 @@
-# Base de Datos de Gestión Académica
+# Base de Datos para sistema de alumnado
 
 Este proyecto consiste en una base de datos diseñada para gestionar la información de alumnos, cursos, materias, notas y usuarios dentro de un entorno académico.
 
@@ -19,28 +19,37 @@ Este proyecto consiste en una base de datos diseñada para gestionar la informac
 - **nombre**: Nombre de la materia.
 
 **Relaciones**:
-- Una materia puede estar relacionada con varios cursos (relación uno a muchos con el modelo [Curso](#curso)).
+- Una materia puede estar relacionada con varios cursos a través de la tabla intermedia [Curso_Materia](#curso_materia).
 
 ### Curso
 
 - **curso_id**: Clave primaria que identifica de manera única a cada curso.
 - **nombre_curso**: Nombre del curso.
-- **materia_ID**: Clave foránea que referencia al modelo [Materia](#materia), indicando qué materia se imparte en este curso.
-- **orientacion**: Orientación del curso (por ejemplo, "Ciencias", "Letras").
+- **orientacion**: Orientación del curso (por ejemplo, "técnica", "Bachiller").
 
 **Relaciones**:
-- Un curso puede tener varias materias (relación uno a muchos con el modelo [Materia](#materia)).
+- Un curso puede estar relacionado con varias materias a través de la tabla intermedia [Curso_Materia](#curso_materia).
 - Un curso puede tener varios alumnos (relación uno a muchos con el modelo [Alumno](#alumno)).
+
+### Curso_Materia
+
+- **curso_materia_id**: Clave primaria que identifica de manera única cada relación entre curso y materia.
+- **curso_id**: Clave foránea que referencia al modelo [Curso](#curso).
+- **materia_id**: Clave foránea que referencia al modelo [Materia](#materia).
+
+**Relaciones**:
+- Un curso puede estar relacionado con varias materias, y una materia puede estar asociada a varios cursos (relación muchos a muchos entre [Curso](#curso) y [Materia](#materia)).
 
 ### Nota
 
 - **id_nota**: Clave primaria que identifica de manera única a cada registro de nota.
 - **alumno_id**: Clave foránea que referencia al alumno que recibe la nota, relacionada con el modelo [Alumno](#alumno).
-- **materia_id**: Clave foránea que referencia a la materia para la cual se asignó la nota, relacionada con el modelo [Materia](#materia).
+- **materia_id**: Clave foránea que referencia a la materia, relacionada con el modelo [Materia](#materia).
+- **curso_id**: Clave foránea que referencia al curso, relacionada con el modelo [Curso](#curso).
 - **nota**: Valor de la nota obtenida.
 
 **Relaciones**:
-- Una nota pertenece a un alumno y a una materia específica (relación muchos a uno con los modelos [Alumno](#alumno) y [Materia](#materia)).
+- Una nota pertenece a un alumno, una materia y un curso específico (relación muchos a uno con los modelos [Alumno](#alumno), [Materia](#materia), y [Curso](#curso)).
 
 ### Usuario
 
@@ -61,22 +70,12 @@ Este proyecto consiste en una base de datos diseñada para gestionar la informac
 **Relaciones**:
 - Un tipo de usuario puede ser asignado a varios usuarios (relación uno a muchos con el modelo [Usuario](#usuario)).
 
-### Planilla
-
-- **planilla_id**: Clave primaria que identifica de manera única a cada planilla.
-- **alumno_ID**: Clave foránea que referencia al alumno relacionado con la planilla, vinculada con el modelo [Alumno](#alumno).
-- **Materia_ID**: Clave foránea que referencia a la materia incluida en la planilla, vinculada con el modelo [Materia](#materia).
-- **Nota_ID**: Clave foránea que referencia a la nota incluida en la planilla, vinculada con el modelo [Nota](#nota).
-
-**Relaciones**:
-- Una planilla registra la información de un alumno, una materia y la nota correspondiente (relación muchos a uno con los modelos [Alumno](#alumno), [Materia](#materia) y [Nota](#nota)).
-
 ## Resumen de Relaciones entre Tablas
 
 - **Alumno**: Relación muchos a uno con [Curso](#curso).
-- **Curso**: Relación uno a muchos con [Materia](#materia) y muchos a uno con [Alumno](#alumno).
-- **Nota**: Relaciones muchos a uno con [Alumno](#alumno) y [Materia](#materia).
+- **Curso**: Relación uno a muchos con [Alumno](#alumno) y relación muchos a muchos con [Materia](#materia) a través de [Curso_Materia](#curso_materia).
+- **Curso_Materia**: Relación muchos a muchos entre [Curso](#curso) y [Materia](#materia).
+- **Nota**: Relaciones muchos a uno con [Alumno](#alumno), [Materia](#materia) y [Curso](#curso).
 - **Usuario**: Relación muchos a uno con [Tipo_usuario](#tipo_usuario).
-- **Planilla**: Relaciones muchos a uno con [Alumno](#alumno), [Materia](#materia) y [Nota](#nota).
 
-Con esta estructura, se puede gestionar eficientemente la información académica, permitiendo un seguimiento detallado de alumnos, cursos, materias, notas, y usuarios del sistema.
+Esta estructura permite gestionar eficientemente la información académica, proporcionando flexibilidad y escalabilidad en la administración de alumnos, cursos, materias, notas y usuarios del sistema.
