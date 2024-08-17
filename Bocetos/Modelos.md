@@ -1,6 +1,4 @@
-# Base de Datos de Gestión Académica
-
-Este proyecto consiste en una base de datos diseñada para gestionar la información de alumnos, cursos, materias, notas y usuarios dentro de un entorno académico.
+# Base de Datos de Colegio Guevara
 
 ## Modelos y Relaciones
 
