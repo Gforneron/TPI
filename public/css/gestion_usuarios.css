@@ -1,0 +1,110 @@
+@import url(./estilo_generales.css);
+
+
+/* Estilos del contenido */
+.main-content {
+    margin-left: 15%; 
+    margin-top: 7%; 
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.courses-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.course {
+    background-color: #f0f0f0;
+    width: calc(33.333% - 20px);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.course a {
+    text-decoration: none;
+    color: #003366;
+}
+
+.course:hover {
+    background-color: #e0e0e0;
+}
+
+.user-management {
+    margin-top: 20px;
+}
+
+.add-btn {
+    background-color: #af4c4c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.add-btn:hover {
+    background-color: #d13030;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-table th, .user-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+/* Estilos para los botones */
+button {
+    background-color: #007bff; 
+    color: white;              
+    border: none;              
+    padding: 10px 20px;     
+    cursor: pointer;           
+    border-radius: 4px;       
+    font-size: 16px;           
+    transition: background-color 0.3s; 
+}
+
+/* Estilos específicos para el botón de agregar */
+.add-btn {
+    background-color: #af4c4c; 
+}
+
+.add-btn:hover {
+    background-color: #d13030; /
+}
+
+/* Estilos específicos para los botones de editar y eliminar */
+.edit-btn, .delete-btn {
+    background-color: #28a745; 
+}
+
+.edit-btn:hover {
+    background-color: #218838;
+}
+
+.delete-btn {
+    background-color: #dc3545; 
+}
+
+.delete-btn:hover {
+    background-color: #c82333; 
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materia 1 - Alumnos y Notas</title>
+    <link rel="stylesheet" href="../../public/css/gestion_materias.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-left">
+                <li>
+                    <a href="index.html">
+                      <img
+                        src="../../public/images/LogoGuevara.png"
+                        alt="LogoGuevara"
+                        class="logo"
+                      />
+                    </a>
+                  </li>                <li><a href="index.html">Inicio</a></li>
+                <li><a href="about.html">Sobre Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <ul class="nav-right">
+            <li><a href="perfil.html" class="fa-solid fa-user profile-icon"></a></li>
+        </ul>
+    </header>
+
+    <aside class="sidebar">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="notas.html">Visualizar Notas</a></li>
+            <li><a href="gestion_curso.html">Gestión de Cursos</a></li>
+            <li><a href="gestion_materias.html">Gestión de Materias</a></li>
+            <li><a href="vista_materias.html">Vista de Materias</a></li>
+            <li><a href="gestion_usuarios.html">Gestión de Usuarios</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <h1>Materia nombre - Curso - Alumnos y Notas</h1>
+        <div class="students-grid">
+            <div class="student-column">
+                <h3>Alumnos</h3>
+                <ul>
+                    <li>Alumno 1</li>
+                    <li>Alumno 2</li>
+                    <li>Alumno 3</li>
+                    <li>Alumno 4</li>
+                    <li>Alumno 5</li>
+                    <!-- Añadir más alumnos según sea necesario -->
+                </ul>
+            </div>
+
+            <div class="grades-column">
+                <h3>Notas</h3>
+                <ul>
+                    <li>
+                        <span>8</span>
+                        <button class="edit-btn" onclick="editNote()">Editar</button>
+                    </li>
+                    <li>
+                        <span>7</span>
+                        <button class="edit-btn" onclick="editNote()">Editar</button>
+                    </li>
+                    <li>
+                        <span>9</span>
+                        <button class="edit-btn" onclick="editNote()">Editar</button>
+                    </li>
+                    <li>
+                        <span>6</span>
+                        <button class="edit-btn" onclick="editNote()">Editar</button>
+                    </li>
+                    <li>
+                        <span>10</span>
+                        <button class="edit-btn" onclick="editNote()">Editar</button>
+                    </li>
+                    <!-- Añadir más notas según sea necesario -->
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function editNote() {
+            alert("A futuro se agrega una funcion de poder modificar la nota");
+        }
+    </script>
+</body>
+</html>

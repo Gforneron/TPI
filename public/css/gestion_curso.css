@@ -1,0 +1,39 @@
+@import url(./estilo_generales.css);
+
+/* Estilos del contenido */
+.main-content {
+    margin-left: 15%; 
+    margin-top: 7%; 
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.courses-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.course {
+    background-color: #f0f0f0;
+    width: calc(33.333% - 20px);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.course a {
+    text-decoration: none;
+    color: #003366;
+}
+
+.course:hover {
+    background-color: #e0e0e0;
+}
+
+
+
