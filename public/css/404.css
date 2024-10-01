@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f9fc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.error-container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.error-code {
+    font-size: 96px;
+    color: #ff6b6b;
+    animation: bounce 1s infinite;
+}
+
+.error-message {
+    font-size: 24px;
+    color: #333;
+}
+
+.error-description {
+    font-size: 16px;
+    color: #666;
+    margin: 20px 0;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #d13030;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-back:hover {
+    background-color: #af4c4c;
+}
+
+.fun-animation {
+    font-size: 50px;
+    margin-top: 20px;
+    animation: shake 0.5s infinite alternate;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}

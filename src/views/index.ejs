@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('partials/head.ejs') %>
+    <title>Pagina Principal</title>
+    <link rel="stylesheet" href="/css/index.css" />
+  </head>
+  <body>
+        <!-- Trae el header --> 
+    <%- include('partials/header.ejs') %>
+
+    <!-- Trae la Barra lateral --> 
+    <%- include('partials/sidebar.ejs') %>
+
+
+    <main class="content-container">
+      <h1>Bienvenido a Nuestra Plataforma</h1>
+      <p>
+        En esta página encontrarás todas las herramientas necesarias para
+        gestionar tu información de manera eficiente. Nuestra plataforma está
+        diseñada para ser intuitiva y fácil de usar. A continuación, puedes ver
+        un video explicativo que te ayudará a familiarizarte con el sistema.
+      </p>
+
+      <div class="video-container">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/tu_video"
+          title="Video explicativo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
+    </main>
+    
+  </body>
+
+</html>

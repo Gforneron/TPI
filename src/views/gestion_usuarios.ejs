@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('partials/head.ejs') %>
+    <title>Gestion Usuarios</title>
+    <link rel="stylesheet" href="/css/gestion_usuarios.css" />
+  </head>
+  <body>
+    <!-- Trae el header -->
+    <%- include('partials/header.ejs') %>
+
+    <!-- Trae la Barra lateral -->
+    <%- include('partials/sidebar.ejs') %>
+
+    <main class="main-content">
+      <h1>Gestión de Usuarios</h1>
+
+      <div class="user-management">
+        <button class="add-btn" onclick="addUser()">Agregar Usuario</button>
+
+        <table class="user-table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Correo Electrónico</th>
+              <th>Rol</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Juan Pérez</td>
+              <td>juan.perez@example.com</td>
+              <td>Profesor</td>
+              <td>
+                <button class="edit-btn" onclick="editUser()">Editar</button>
+                <button class="delete-btn" onclick="deleteUser()">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>María López</td>
+              <td>maria.lopez@example.com</td>
+              <td>Estudiante</td>
+              <td>
+                <button class="edit-btn" onclick="editUser()">Editar</button>
+                <button class="delete-btn" onclick="deleteUser()">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+            <!-- Añadir más usuarios según sea necesario -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <script>
+      function addUser() {
+        alert("Función para agregar un nuevo usuario.");
+        // Aquí puedes abrir un formulario para agregar un nuevo usuario
+      }
+
+      function editUser() {
+        alert("Función para editar usuario.");
+        // Aquí puedes implementar la lógica para editar un usuario
+      }
+
+      function deleteUser() {
+        if (confirm("¿Estás seguro de eliminar este usuario?")) {
+          alert("Usuario eliminado.");
+          // Aquí se implementaría la lógica para eliminar el usuario
+        }
+      }
+    </script>
+  </body>
+</html>
