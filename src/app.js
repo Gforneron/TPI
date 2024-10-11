@@ -5,7 +5,7 @@ const path = require("path");
 // Crear la aplicación de Express
 const app = express();
 
-const port = process.env.port || 8080;
+const port = process.env.port || 8000;
 
 // Configurar la carpeta pública para servir archivos estáticos
 const publico = path.resolve(__dirname, "../public");
@@ -15,8 +15,9 @@ app.use(express.static(publico));
 app.set("view engine", "ejs"); // usar EJS como motor de vistas
 app.set("views", path.resolve(__dirname, "views")); // establecer la carpeta de vistas en ./views
 
-// rutas para el inicio de la aplicación
-app.use("/", require("./routers/mainRoutes.js")); 
+// Configurar Rutas de la aplicacion 
+app.use("/", require("./routers/mainRoutes.js")); // rutas para el inicio de la aplicación
+app.use("/", require("./routers/userRoutes.js")); // rutas para los usuarios
 
 // Manejar errores 404
 app.use((req, res, next) => {
@@ -24,4 +25,4 @@ app.use((req, res, next) => {
   });
 
 // Levantar servidor
-app.listen(port, () => console.log("Corriendo servidor en: http://localhost:8080/login"));
+app.listen(port, () => console.log("Corriendo servidor en: http://localhost:8000/login"));

@@ -24,18 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alumno`
---
-
-CREATE TABLE `alumno` (
-  `alumno_id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `curso_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `curso`
 --
 
@@ -76,10 +64,25 @@ CREATE TABLE `materia` (
 
 CREATE TABLE `nota` (
   `nota_id` int(11) NOT NULL,
-  `alumno_id` int(11) DEFAULT NULL,
+  `persona_id` int(11) DEFAULT NULL,
   `materia_id` int(11) DEFAULT NULL,
   `curso_id` int(11) DEFAULT NULL,
   `nota` decimal(5,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `persona`
+--
+
+CREATE TABLE `persona` (
+  `persona_id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `contrasena` varchar(100) NOT NULL,
+  `tipo_usuario_id` int(11) NOT NULL,
+  `curso_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -93,30 +96,10 @@ CREATE TABLE `tipo_usuario` (
   `rol` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuario`
---
-
-CREATE TABLE `usuario` (
-  `usuario_id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `correo` varchar(100) NOT NULL,
-  `contrasena` varchar(100) NOT NULL,
-  `tipo_usuario_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `alumno`
---
-ALTER TABLE `alumno`
-  ADD PRIMARY KEY (`alumno_id`),
-  ADD KEY `curso_id` (`curso_id`);
 
 --
 -- Indices de la tabla `curso`
@@ -143,9 +126,16 @@ ALTER TABLE `materia`
 --
 ALTER TABLE `nota`
   ADD PRIMARY KEY (`nota_id`),
-  ADD KEY `alumno_id` (`alumno_id`),
   ADD KEY `materia_id` (`materia_id`),
   ADD KEY `curso_id` (`curso_id`);
+
+--
+-- Indices de la tabla `persona`
+--
+ALTER TABLE `persona`
+  ADD PRIMARY KEY (`persona_id`),
+  ADD KEY `curso_id` (`curso_id`),
+  ADD KEY `tipo_usuario_id` (`tipo_usuario_id`);
 
 --
 -- Indices de la tabla `tipo_usuario`
@@ -154,22 +144,9 @@ ALTER TABLE `tipo_usuario`
   ADD PRIMARY KEY (`tipo_usuario_id`);
 
 --
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`usuario_id`),
-  ADD UNIQUE KEY `correo` (`correo`),
-  ADD KEY `tipo_usuario_id` (`tipo_usuario_id`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
---
--- AUTO_INCREMENT de la tabla `alumno`
---
-ALTER TABLE `alumno`
-  MODIFY `alumno_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `curso`
@@ -196,26 +173,21 @@ ALTER TABLE `nota`
   MODIFY `nota_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `persona`
+--
+ALTER TABLE `persona`
+  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
   MODIFY `tipo_usuario_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- Restricciones para tablas volcadas
 --
 
---
--- Filtros para la tabla `alumno`
---
-ALTER TABLE `alumno`
-  ADD CONSTRAINT `alumno_ibfk_1` FOREIGN KEY (`curso_id`) REFERENCES `curso` (`curso_id`);
 
 --
 -- Filtros para la tabla `curso_materia`
@@ -228,16 +200,16 @@ ALTER TABLE `curso_materia`
 -- Filtros para la tabla `nota`
 --
 ALTER TABLE `nota`
-  ADD CONSTRAINT `nota_ibfk_1` FOREIGN KEY (`alumno_id`) REFERENCES `alumno` (`alumno_id`),
+  ADD CONSTRAINT `nota_ibfk_1` FOREIGN KEY (`persona_id`) REFERENCES `persona` (`persona_id`),
   ADD CONSTRAINT `nota_ibfk_2` FOREIGN KEY (`materia_id`) REFERENCES `materia` (`materia_id`),
   ADD CONSTRAINT `nota_ibfk_3` FOREIGN KEY (`curso_id`) REFERENCES `curso` (`curso_id`);
 
 --
--- Filtros para la tabla `usuario`
+-- Filtros para la tabla `persona`
 --
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`tipo_usuario_id`) REFERENCES `tipo_usuario` (`tipo_usuario_id`);
-COMMIT;
+ALTER TABLE `persona`
+  ADD CONSTRAINT `persona_ibfk_1` FOREIGN KEY (`curso_id`) REFERENCES `curso` (`curso_id`),
+  ADD CONSTRAINT `persona_ibfk_2` FOREIGN KEY (`tipo_usuario_id`) REFERENCES `tipo_usuario` (`tipo_usuario_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
