@@ -1,11 +1,27 @@
 // LLamadas de Librerias
-const express = require("express");
-const path = require("path");
+const express = require("express"); // framework para construir aplicaciones web
+const path = require("path"); // manejo de rutas
+const session = require("express-session"); // manejo de sesiones
 
 // Crear la aplicación de Express
 const app = express();
 
 const port = process.env.port || 8000;
+
+// Middleware para analizar datos de formularios (application/x-www-form-urlencoded)
+app.use(express.urlencoded({ extended: true }));
+
+// Middleware para analizar datos JSON (application/json)
+app.use(express.json());
+
+app.use(session({
+  secret: 'secret-key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+      maxAge: 1000 * 60 * 60 * 24 
+  }
+}));
 
 // Configurar la carpeta pública para servir archivos estáticos
 const publico = path.resolve(__dirname, "../public");
