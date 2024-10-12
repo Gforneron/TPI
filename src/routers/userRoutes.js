@@ -9,8 +9,8 @@ router.get('/edit_perfil', userController.edit_perfil); // Editar perfil
 router.get('/perfil', userController.perfil); // Página de perfil
 
 
-router.post('/login', userController.loginUser); // Página de perfil
-router.get('/login', userController.login); // Página de login
+router.post('/', userController.loginUser); // Página de perfil
+router.get('/', userController.login); // Página de login
 
 
 

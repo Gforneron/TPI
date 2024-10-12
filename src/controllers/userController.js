@@ -42,7 +42,7 @@ userController.loginUser = async (req, res) => {
       console.log(req.session);
 
 
-      return res.redirect("/");
+      return res.redirect("/home");
   } catch (error) {
       console.error("Error al iniciar sesión:", error);
       res.status(500).render("error", { message: "Error interno del servidor." });
