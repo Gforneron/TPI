@@ -21,11 +21,12 @@
           class="profile-picture"
         />
         <div class="profile-details">
-          <h2>Nombre Apellido</h2>
-          <p><strong>Email:</strong> usuario@example.com</p>
-          <p><strong>Teléfono:</strong> +123 456 7890</p>
+          <h2><%= usuario.nombre %></h2>
+          <p><strong>Email:</strong> <%=usuario.correo%> </p>
+          <p><strong>Curso:</strong> <%= usuario.curso_id %></p>
           <p><strong>Dirección:</strong> Calle Ejemplo, Ciudad, País</p>
           <a href="edit_perfil" class="btn-edit">Editar Perfil</a>
+          <a href="/cerrar" class="btn-edit">Cerrar Sesión</a>
         </div>
       </div>
     </main>
