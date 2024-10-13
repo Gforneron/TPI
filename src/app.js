@@ -34,6 +34,8 @@ app.set("views", path.resolve(__dirname, "views")); // establecer la carpeta de 
 // Configurar Rutas de la aplicacion 
 app.use("/", require("./routers/mainRoutes.js")); // rutas para el inicio de la aplicación
 app.use("/", require("./routers/userRoutes.js")); // rutas para los usuarios
+app.use("/", require("./routers/adminRoutes.js")); // rutas para el inicio de la aplicación
+
 
 // Manejar errores 404
 app.use((req, res, next) => {
@@ -41,4 +43,4 @@ app.use((req, res, next) => {
   });
 
 // Levantar servidor
-app.listen(port, () => console.log("Corriendo servidor en: http://localhost:8000/login"));
+app.listen(port, () => console.log("Corriendo servidor en: http://localhost:8000/"));

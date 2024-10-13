@@ -22,6 +22,14 @@ module.exports = (sequelize, DataTypes) => {
                 model: 'Materia',
                 key: 'materia_id'
             }
+        },
+        cuatrimestre: { 
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        informe: { 
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     }, {
         tableName: 'nota',

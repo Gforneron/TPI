@@ -23,7 +23,7 @@ userController.updatePerfil = async (req, res) => {
       console.log("req.session", req.session);
       
       // Encuentra al usuario logueado
-      const usuarioId = req.session.usuarioLogueado.persona_id;
+      const usuarioId = req.session.usuarioLogueado;
       console.log("usuarioID", usuarioId);
       
       const usuario = await db.Persona.findByPk(usuarioId);

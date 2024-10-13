@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-10-2024 a las 08:14:55
+-- Tiempo de generación: 13-10-2024 a las 01:17:17
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -33,6 +33,39 @@ CREATE TABLE `curso` (
   `orientacion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `curso`
+--
+
+INSERT INTO `curso` (`curso_id`, `nombre_curso`, `orientacion`) VALUES
+(1, '1ro 1ra', 'Tecnica'),
+(2, '1ro 2da', 'Tecnica'),
+(3, '1ro 3ra', 'Tecnica'),
+(4, '1ro 4ta', 'Tecnica'),
+(5, '2do 1ra', 'Tecnica'),
+(6, '2do 2da', 'Tecnica'),
+(7, '2do 3ra', 'Tecnica'),
+(8, '2do 4ta', 'Tecnica'),
+(9, '3ro 1ra', 'Tecnica'),
+(10, '3ro 2da', 'Tecnica'),
+(11, '3ro 3ra', 'Tecnica'),
+(12, '3ro 4ta', 'Tecnica'),
+(13, '4to 1ra', 'Tecnica'),
+(14, '4to 2da', 'Tecnica'),
+(15, '4to 3ra', 'Tecnica'),
+(16, '4to 4ta', 'Tecnica'),
+(17, '5to 1ra', 'Tecnica'),
+(18, '5to 2da', 'Tecnica'),
+(19, '5to 3ra', 'Tecnica'),
+(20, '5to 4ta', 'Tecnica'),
+(21, '6to 1ra', 'Tecnica'),
+(22, '6to 2da', 'Tecnica'),
+(23, '6to 3ra', 'Tecnica'),
+(24, '6to 4ta', 'Tecnica'),
+(25, '7mo 1ra', 'Tecnica'),
+(26, '7mo 2da', 'Tecnica'),
+(27, '7mo 3ra', 'Tecnica');
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +78,42 @@ CREATE TABLE `curso_materia` (
   `materia_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `curso_materia`
+--
+
+INSERT INTO `curso_materia` (`curso_materia_id`, `curso_id`, `materia_id`) VALUES
+(1, 25, 1),
+(2, 25, 2),
+(3, 25, 3),
+(4, 25, 4),
+(5, 25, 5),
+(6, 25, 6),
+(7, 25, 7),
+(8, 25, 8),
+(9, 25, 9),
+(10, 25, 10),
+(11, 26, 1),
+(12, 26, 2),
+(13, 26, 3),
+(14, 26, 4),
+(15, 26, 5),
+(16, 26, 6),
+(17, 26, 7),
+(18, 26, 8),
+(19, 26, 9),
+(20, 26, 10),
+(21, 27, 1),
+(22, 27, 2),
+(23, 27, 3),
+(24, 27, 4),
+(25, 27, 5),
+(26, 27, 6),
+(27, 27, 7),
+(28, 27, 8),
+(29, 27, 9),
+(30, 27, 10);
+
 -- --------------------------------------------------------
 
 --
@@ -55,6 +124,22 @@ CREATE TABLE `materia` (
   `materia_id` int(11) NOT NULL,
   `nombre_materia` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `materia`
+--
+
+INSERT INTO `materia` (`materia_id`, `nombre_materia`) VALUES
+(1, 'matematicas septimo'),
+(2, 'ingles tecnico septimo'),
+(3, 'marco juridico y derechos del trabajo'),
+(4, 'asistencia 2'),
+(5, 'autogestion'),
+(6, 'hardware 4'),
+(7, 'practicas profesionalizantes 2'),
+(8, 'programacion'),
+(9, 'redes 3'),
+(10, 'arduino 3');
 
 -- --------------------------------------------------------
 
@@ -70,6 +155,16 @@ CREATE TABLE `nota` (
   `nota` decimal(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `nota`
+--
+
+INSERT INTO `nota` (`nota_id`, `persona_id`, `materia_id`, `curso_id`, `nota`) VALUES
+(1, 45888806, 1, 25, 10.00),
+(2, 45888806, 6, 25, 8.00),
+(3, 45888815, 4, 25, 10.00),
+(4, 45888815, 6, 25, 8.00);
+
 -- --------------------------------------------------------
 
 --
@@ -81,9 +176,19 @@ CREATE TABLE `persona` (
   `nombre` varchar(100) NOT NULL,
   `correo` varchar(100) NOT NULL,
   `contrasena` varchar(100) NOT NULL,
-  `tipo_usuario_id` int(11) NOT NULL,
+  `tipo_usuario_id` int(11) DEFAULT NULL,
   `curso_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`persona_id`, `nombre`, `correo`, `contrasena`, `tipo_usuario_id`, `curso_id`) VALUES
+(1, 'administrador', 'gonzaloforneron12@gmail.com', 'Abc123456', 2, NULL),
+(45888806, 'gonzalo forneron', 'gonzaloforneron@gmail.com', 'Abc123456', 1, 25),
+(45888815, 'gonzalo forneron', 'forneron@gmail.com', '$2a$08$BW4/tdQ1C7ozcur0A4LcLOUkMnFMptPHWS7EPD9I5BW7P1/Z6Y6p.', 1, 25),
+(45888816, 'juan gomez', 'pedro@gmail.com', '$2a$08$VKtRgN.3/R9H2Tsa/gglBuuXJzOSss/w9fCXWH0lvw3SQHYNbQX5e', 1, 26);
 
 -- --------------------------------------------------------
 
@@ -96,6 +201,14 @@ CREATE TABLE `tipo_usuario` (
   `rol` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`tipo_usuario_id`, `rol`) VALUES
+(1, 'alumno'),
+(2, 'administrador'),
+(3, 'alumnado');
 
 --
 -- Índices para tablas volcadas
@@ -127,7 +240,8 @@ ALTER TABLE `materia`
 ALTER TABLE `nota`
   ADD PRIMARY KEY (`nota_id`),
   ADD KEY `materia_id` (`materia_id`),
-  ADD KEY `curso_id` (`curso_id`);
+  ADD KEY `curso_id` (`curso_id`),
+  ADD KEY `nota_ibfk_1` (`persona_id`);
 
 --
 -- Indices de la tabla `persona`
@@ -147,47 +261,45 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
-
 --
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `curso_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `curso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `curso_materia`
 --
 ALTER TABLE `curso_materia`
-  MODIFY `curso_materia_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `curso_materia_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `materia_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `materia_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `nota`
 --
 ALTER TABLE `nota`
-  MODIFY `nota_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `nota_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45888817;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  MODIFY `tipo_usuario_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tipo_usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
 --
-
 
 --
 -- Filtros para la tabla `curso_materia`
@@ -210,6 +322,7 @@ ALTER TABLE `nota`
 ALTER TABLE `persona`
   ADD CONSTRAINT `persona_ibfk_1` FOREIGN KEY (`curso_id`) REFERENCES `curso` (`curso_id`),
   ADD CONSTRAINT `persona_ibfk_2` FOREIGN KEY (`tipo_usuario_id`) REFERENCES `tipo_usuario` (`tipo_usuario_id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

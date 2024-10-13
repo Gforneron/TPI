@@ -1,234 +1,86 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
-  <head>
+<head>
     <%- include('partials/head.ejs') %>
     <title>Notas</title>
     <link rel="stylesheet" href="/css/notas.css" />
-  </head>
-  <body>
-    <!-- Trae el header -->
+</head>
+<body>
     <%- include('partials/header.ejs') %>
-
-    <!-- Trae la Barra lateral -->
     <%- include('partials/sidebar.ejs') %>
 
     <main class="content-container">
-      <table>
-        <tbody>
-          <tr>
-            <td colspan="16">COLEGIO PROVINCIAL DR. ERNESTO GUEVARA</td>
-          </tr>
-          <tr>
-            <td colspan="3">Apellido y nombre:</td>
-            <td colspan="3"></td>
-            <td colspan="3">Curso:</td>
-            <td colspan="3"></td>
-            <td colspan="2">año:</td>
-            <td colspan="2"></td>
-          </tr>
-          <tr>
-            <td colspan="2">Ciclo Superior de la ESO</td>
-            <td>materia 1</td>
-            <td>materia 2</td>
-            <td>materia 3</td>
-            <td>materia 4</td>
-            <td>materia 5</td>
-            <td>materia 6</td>
-            <td>materia 7</td>
-            <td>materia 8</td>
-            <td>materia 9</td>
-            <td>materia 10</td>
-            <td>materia 11</td>
-            <td>materia 12</td>
-            <td>materia 13</td>
-            <td>materia 14</td>
-          </tr>
-          <tr>
-            <td rowspan="3">Primer cuatrimestre</td>
-            <td>1° informe</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>2° informe</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>NOTA</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td rowspan="3">Segundo cuatrimestre</td>
-            <td>1° informe</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>2° informe</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>NOTA</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="2">Calificación anual</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="2">Calificación diciembre/acreditación Técn</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="2">Calificación febrero/marzo</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="2">Calificación definitiva</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="2">Asistencia</td>
-            <td colspan="3">Faltas injustificadas</td>
-            <td></td>
-            <td colspan="3">Faltas justificadas</td>
-            <td></td>
-            <td colspan="4">Porcentaje de inasistencia anual</td>
-            <td colspan="2"></td>
-          </tr>
-          <tr>
-            <td colspan="16"></td>
-          </tr>
-          <tr>
-            <td>Observaciones:</td>
-            <td colspan="15"></td>
-          </tr>
-        </tbody>
-      </table>
+        <table>
+            <tbody>
+                <tr>
+                    <td colspan="16">COLEGIO PROVINCIAL DR. ERNESTO GUEVARA</td>
+                </tr>
+                <tr>
+                    <td colspan="3">Apellido y nombre:</td>
+                    <td colspan="3"><%= usuario.nombre %></td>
+                    <td colspan="3">Curso:</td>
+                    <td colspan="3"><%= usuario.curso.nombre_curso %></td>
+                    <td colspan="2">Año:</td>
+                    <td colspan="2">2024</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Ciclo Superior de la ESO</td>
+
+                    <% if (usuario.curso && usuario.curso.materias) { %>
+                        <% usuario.curso.materias.forEach(materia => { %>
+                            <td><%= materia.nombre_materia %></td> <!-- Muestra el nombre de la materia -->
+                        <% }); %>
+                    <% } else { %>
+                        <td colspan="14">No se encontraron materias</td>
+                    <% } %>
+                </tr>
+
+                <% const informes = ['1° informe', '2° informe']; %>
+                <% ['Primer cuatrimestre', 'Segundo cuatrimestre'].forEach((cuatrimestre, cuatrimestreIndex) => { %>
+                    <tr>
+                        <td rowspan="3"><%= cuatrimestre %></td>
+                        <% informes.forEach((informe) => { %>
+                            <td><%= informe %></td>
+                            <% if (usuario.curso && usuario.curso.materias) { %>
+                                <% usuario.curso.materias.forEach(materia => { %>
+                                    <td>
+                                        <% 
+                                        const nota = materia.notas.find(n => n.cuatrimestre === (cuatrimestreIndex + 1) && n.informe === (informes.indexOf(informe) + 1));
+                                        if (nota) { 
+                                        %>
+                                            <%= nota.dataValues.nota %> <!-- Muestra la nota si existe -->
+                                        <% } else { %>
+                                            - <!-- Muestra un mensaje si no hay nota -->
+                                        <% } %>
+                                    </td>
+                                <% }); %>
+                            <% } else { %>
+                                <td colspan="14">No se encontraron materias</td>
+                            <% } %>
+                        </tr>
+                    <% }); %>
+                    <tr>
+                        <td>NOTA FINAL</td> 
+                        <% if (usuario.curso && usuario.curso.materias) { %>
+                            <% usuario.curso.materias.forEach(materia => { %>
+                                <td>
+                                    <% 
+                                    const notaFinal = materia.notas.find(n => n.informe === 3 && n.cuatrimestre === (cuatrimestreIndex + 1));
+                                    if (notaFinal) { 
+                                    %>
+                                        <%= notaFinal.dataValues.nota %> <!-- Muestra la nota final si existe -->
+                                    <% } else { %>
+                                        - <!-- Muestra un mensaje si no hay nota -->
+                                    <% } %>
+                                </td>
+                            <% }); %>
+                        <% } else { %>
+                            <td colspan="14">No se encontraron materias</td>
+                        <% } %>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
     </main>
-  </body>
+</body>
 </html>
