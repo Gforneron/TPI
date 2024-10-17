@@ -1,28 +1,37 @@
-    // llamada de librerias
-const express = require('express');
+// llamada de librerias
+const express = require("express");
 const router = express.Router();
+const multer = require("multer");
 
-    // Llamada de controller
-const userController = require('../controllers/userController');
+// Llamada de controller
+const userController = require("../controllers/userController");
 
-router.get('/edit_perfil/', userController.edit_perfil); // Editar perfil
-router.post('/edit_perfil/', userController.updatePerfil); // Editar perfil
+// Implentacion de multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/images/usuarios");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + "-" + Date.now() + ".jpg");
+  },
+});
+const upload = multer({ storage: storage });
 
-router.get('/perfil', userController.perfil); // Página de perfils
+//editado de perfil
+router.get("/edit_perfil", userController.edit_perfil); // Retorno de vista
+router.post("/edit_perfil/:id", upload.single("foto_perfil"), userController.updatePerfil); // Editar perfil
 
+router.get("/perfil", userController.perfil); // retorno de Página de perfils
 
-router.post('/', userController.loginUser); // Página de perfil
-router.get('/', userController.login); // Página de login
+// Login
+router.get("/", userController.login); // Retorno de pagina login
+router.post("/", userController.loginUser); // Funcionalidad del login
 
+// Register
+router.get("/register", userController.register); //retorno del formulario register
+router.post("/register",upload.single("user_predeterminado"), userController.newUser); // funcionalidad del formulario register
 
-
-   //retorno del formulario register
-router.get('/register', userController.register); 
-    // funcionalidad del formulario register
-router.post('/register', userController.newUser); 
-
-    // cerrado de sesion
-router.get("/cerrar", userController.cerrar)
+// cerrado de sesion
+router.get("/cerrar", userController.cerrar);
 
 module.exports = router;
-

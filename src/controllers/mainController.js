@@ -4,8 +4,8 @@ const mainController = {};
 
 // Retorna la vista de pag principal
 mainController.index = async (req, res) => {
-  console.log(req.session.usuarioLogueado);
-  return res.render("index.ejs");
+  usuario = req.session.usuarioLogueado;  
+  return res.render("index.ejs", {usuario});
 };
 
 mainController.notas = async (req, res) => {

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <%- include('partials/head.ejs') %>
     <title>Gestión Curso</title>
     <link rel="stylesheet" href="/css/gestion_curso.css" />
-  </head>
-  <body>
+</head>
+<body>
     <!-- Trae el header -->
     <%- include('partials/header.ejs') %>
 
@@ -13,54 +13,16 @@
     <%- include('partials/sidebar.ejs') %>
 
     <main class="main-content">
-      <h1>Cursos del Colegio</h1>
-      <div class="courses-grid">
-        <div class="course">
-          <a href="gestion_materias">
-            <h3>Curso 1</h3>
-          </a>
+        <h1>Cursos del Colegio</h1>
+        <div class="courses-grid">
+            <% cursos.forEach(curso => { %>
+                <div class="course">
+                    <a href="gestion_materias/<%= curso.curso_id %> "">
+                        <h3><%= curso.nombre_curso %></h3>
+                    </a>
+                </div>
+            <% }); %>
         </div>
-        <div class="course">
-          <a href="gestion_materias">
-            <h3>Curso 2</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="gestion_materias">
-            <h3>Curso 3</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="gestion_materias">
-            <h3>Curso 4</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="gestion_materias">
-            <h3>Curso 5</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="gestion_materias">
-            <h3>Curso 6</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="gestion_materias">
-            <h3>Curso 7</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="gestion_materias">
-            <h3>Curso 8</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="gestion_materias">
-            <h3>Curso 9</h3>
-          </a>
-        </div>
-      </div>
     </main>
-  </body>
+</body>
 </html>

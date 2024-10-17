@@ -1,46 +1,49 @@
+const { type } = require("os");
+
 module.exports = (sequelize, DataTypes) => {
-  let alias = 'Persona';
+  let alias = "Persona";
 
   let cols = {
     persona_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
     nombre: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     correo: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
-    contrasena:   
- {
-      type: DataTypes.STRING   
-
+    contrasena: {
+      type: DataTypes.STRING,
     },
     tipo_usuario_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     curso_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+    },
+    foto_perfil: {
+      type: DataTypes.STRING
     }
   };
 
   let config = {
-    tableName: 'persona',
-    timestamps: false
+    tableName: "persona",
+    timestamps: false,
   };
 
   const Persona = sequelize.define(alias, cols, config);
 
   Persona.associate = (models) => {
     Persona.belongsTo(models.TipoUsuario, {
-      as: 'tipoUsuario',
-      foreignKey: 'tipo_usuario_id'
+      as: "tipoUsuario",
+      foreignKey: "tipo_usuario_id",
     });
     Persona.belongsTo(models.Curso, {
-      as: 'curso',
-      foreignKey: 'curso_id'
+      as: "curso",
+      foreignKey: "curso_id",
     });
   };
 

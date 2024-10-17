@@ -1,78 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <%- include('partials/head.ejs') %>
-    <title>Gestion Usuarios</title>
-    <link rel="stylesheet" href="/css/gestion_usuarios.css" />
-  </head>
-  <body>
-    <!-- Trae el header -->
-    <%- include('partials/header.ejs') %>
+<head>
+  <%- include('partials/head.ejs') %>
+  <title>Gestión de Usuarios</title>
+  <link rel="stylesheet" href="/css/gestion_usuarios.css" />
+</head>
+<body>
+  <%- include('partials/header.ejs') %>
+  <%- include('partials/sidebar.ejs') %>
 
-    <!-- Trae la Barra lateral -->
-    <%- include('partials/sidebar.ejs') %>
+  <main class="main-content">
+    <h1>Gestión de Usuarios</h1>
 
-    <main class="main-content">
-      <h1>Gestión de Usuarios</h1>
+    <div class="user-management">
+      <button class="add-btn" onclick="window.location.href='/register'">Agregar Usuario</button>
 
-      <div class="user-management">
-        <button class="add-btn" onclick="addUser()">Agregar Usuario</button>
-
-        <table class="user-table">
-          <thead>
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>ID (dni) </th>
+            <th>Nombre</th>
+            <th>Correo Electrónico</th>
+            <th>Rol</th>
+            <th>Curso</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% usuarios.forEach(usuario => { %>
             <tr>
-              <th>Nombre</th>
-              <th>Correo Electrónico</th>
-              <th>Rol</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Juan Pérez</td>
-              <td>juan.perez@example.com</td>
-              <td>Profesor</td>
+              <td><%= usuario.persona_id %></td>
+              <td><%= usuario.nombre %></td>
+              <td><%= usuario.correo %></td>
+              <td><%= usuario.tipoUsuario.dataValues.rol %></td>
               <td>
-                <button class="edit-btn" onclick="editUser()">Editar</button>
-                <button class="delete-btn" onclick="deleteUser()">
-                  Eliminar
-                </button>
+                <% if (usuario.curso) { %>
+                  <%= usuario.curso.dataValues.nombre_curso %>
+                <% } else { %>
+                  Sin Curso
+                <% } %>
               </td>
-            </tr>
-            <tr>
-              <td>María López</td>
-              <td>maria.lopez@example.com</td>
-              <td>Estudiante</td>
-              <td>
+                            <td>
                 <button class="edit-btn" onclick="editUser()">Editar</button>
-                <button class="delete-btn" onclick="deleteUser()">
-                  Eliminar
-                </button>
+                <button class="delete-btn" onclick="deleteUser()">Eliminar</button>
               </td>
+              <td><%= console.log("hola", usuario)%></td>
             </tr>
-            <!-- Añadir más usuarios según sea necesario -->
-          </tbody>
-        </table>
-      </div>
-    </main>
-
-    <script>
-      function addUser() {
-        alert("Función para agregar un nuevo usuario.");
-        // Aquí puedes abrir un formulario para agregar un nuevo usuario
-      }
-
-      function editUser() {
-        alert("Función para editar usuario.");
-        // Aquí puedes implementar la lógica para editar un usuario
-      }
-
-      function deleteUser() {
-        if (confirm("¿Estás seguro de eliminar este usuario?")) {
-          alert("Usuario eliminado.");
-          // Aquí se implementaría la lógica para eliminar el usuario
-        }
-      }
-    </script>
-  </body>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
 </html>

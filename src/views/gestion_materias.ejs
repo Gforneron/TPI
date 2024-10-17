@@ -2,64 +2,30 @@
 <html lang="es">
   <head>
     <%- include('partials/head.ejs') %>
-    <title>Gestion Materias</title>
+    <title>Gestión de Materias</title>
     <link rel="stylesheet" href="/css/gestion_materias.css" />
   </head>
   <body>
     <!-- Trae el header -->
     <%- include('partials/header.ejs') %>
 
-    <!-- Trae la Barra lateral -->
+    <!-- Trae la barra lateral -->
     <%- include('partials/sidebar.ejs') %>
 
     <main class="main-content">
-      <h1>7mo 1ra - Materias</h1>
+      <h1><%= curso.nombre_curso %> - Materias</h1>
       <div class="courses-grid">
-        <div class="course">
-          <a href="vista_materias">
-            <h3>Matematicas</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="vista_materias">
-            <h3>Ingles</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="vista_materias">
-            <h3>Autogestion</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="vista_materias">
-            <h3>Hardware</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="vista_materias">
-            <h3>Software</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="vista_materias">
-            <h3>Programación iv</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="vista_materias">
-            <h3>Asistencia</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="vista_materias">
-            <h3>Redes 3</h3>
-          </a>
-        </div>
-        <div class="course">
-          <a href="vista_materias">
-            <h3>Marco juridico</h3>
-          </a>
-        </div>
+        <% if (curso.materias && curso.materias.length > 0) { %>
+          <% curso.materias.forEach(materia => { %>
+            <div class="course">
+              <a href="/curso/<%= curso.curso_id %>/materia/<%= materia.materia_id %>">
+                <h3><%= materia.nombre_materia %></h3>
+              </a>
+            </div>
+          <% }); %>
+        <% } else { %>
+          <p>No se encontraron materias para este curso.</p>
+        <% } %>
       </div>
     </main>
   </body>

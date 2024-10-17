@@ -10,49 +10,37 @@ const userController = {};
 // Retorna la vista del editado de perfil
 userController.edit_perfil = async (req, res) => {
   usuario = req.session.usuarioLogueado;  
-  return res.render("edit_perfil.ejs");
+  return res.render("edit_perfil.ejs", {usuario});
 };
 
 // Procesar el formulario de editar perfil
 userController.updatePerfil = async (req, res) => {
   try {
-    console.log("este es el req.body",  req.body);
-    
-      const { nombre, correo, phone, address } = req.body;  // Extrae los campos del formulario
+    const { nombre, correo } = req.body;
+    const usuarioId = req.params.id;
 
-      console.log("req.session", req.session);
-      
-      // Encuentra al usuario logueado
-      const usuarioId = req.session.usuarioLogueado;
-      console.log("usuarioID", usuarioId);
-      
-      const usuario = await db.Persona.findByPk(usuarioId);
-      console.log("usuario buscado por bd", usuario);
+    const usuario = await db.Persona.findByPk(usuarioId);
+    if (usuario) {
+      usuario.nombre = nombre;
+      usuario.correo = correo;
 
-      if (usuario) {
-          // Actualiza los datos del usuario
-          usuario.nombre = nombre;
-          usuario.correo = correo;
-          usuario.telefono = phone || usuario.telefono;  // Si no se llena, conserva el valor actual
-          usuario.direccion = address || usuario.direccion;
-
-          await usuario.save();  // Guarda los cambios en la base de datos
-
-          // Actualiza la sesión con la nueva información
-          req.session.usuarioLogueado = usuario;
-
-          return res.redirect("/perfil");  // Redirige a la página del perfil después de actualizar
-      } else {
-          res.status(404).render("error", { message: "Usuario no encontrado." });
+      // Si se carga una nueva foto de perfil, actualiza el campo correspondiente
+      if (req.file) {
+        usuario.foto_perfil = req.file.filename; // Asegúrate de que esto sea correcto
       }
+
+      await usuario.save();
+      req.session.usuarioLogueado = usuario;
+
+      return res.redirect("/perfil");
+    } else {
+      res.status(404).render("error", { message: "Usuario no encontrado." });
+    }
   } catch (error) {
-      console.error("Error al actualizar el perfil:", error);
-      res.status(500).render("error", { message: "Error interno del servidor." });
+    console.error("Error al actualizar el perfil:", error);
+    res.status(500).render("error", { message: "Error interno del servidor." });
   }
 };
-
-
-
 
 // Retorna la vista de pag de login
 userController.login = async (req, res) => {
@@ -94,7 +82,7 @@ userController.loginUser = async (req, res) => {
 // Retorna la vista del perfil
 userController.perfil = async (req, res) => {
   usuario = req.session.usuarioLogueado;
-  return res.render("perfil.ejs");
+  return res.render("perfil.ejs", {usuario});
 };
 
 // Retorna la vista del registro
@@ -104,8 +92,6 @@ userController.register = async (req, res) => {
 
 userController.newUser = async (req, res) => {
   try {
-    console.log(req.body);
-
     let errores = validationResult(req);
 
     const { nombre, correo, password, confirmed } = req.body;
@@ -121,6 +107,7 @@ userController.newUser = async (req, res) => {
       correo,
       contrasena: bcryptjs.hashSync(password, 8), // Encriptar solo si las contraseñas coinciden
       tipo_usuario_id: 1,
+      foto_perfil: 'user_predeterminado.jpg'
     };
 
     // Solo guarda el usuario si no hay errores

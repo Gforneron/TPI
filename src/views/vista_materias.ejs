@@ -1,63 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <%- include('partials/head.ejs') %>
-    <title>Vista materias</title>
-    <link rel="stylesheet" href="/css/vista_materias.css"/>
-  </head>
-  <body>
-    <!-- Trae el header -->
-    <%- include('partials/header.ejs') %>
+<head>
+  <%- include('partials/head.ejs') %>
+  <title>Vista materias</title>
+  <link rel="stylesheet" href="/css/vista_materias.css"/>
+</head>
+<body>
+  <%- include('partials/header.ejs') %>
+  <%- include('partials/sidebar.ejs') %>
 
-    <!-- Trae la Barra lateral -->
-    <%- include('partials/sidebar.ejs') %>
+  <main class="main-content">
+    <h1><%= curso.nombre_curso %> - Alumnos en Materia</h1> <!-- Mostrar el nombre del curso -->
+    <h2><%= materia.nombre_materia %></h2> <!-- Mostrar el nombre de la materia seleccionada -->
 
-    <main class="main-content">
-      <h1>Materia nombre - Curso - Alumnos y Notas</h1>
-      <div class="students-grid">
-        <div class="student-column">
-          <h3>Alumnos</h3>
+    <div class="students-grid">
+      <div class="student-column">
+        <h3>Alumnos</h3>
+        <form id="grades-form" method="POST" action="">
           <ul>
-            <li>Alumno 1</li>
-            <li>Alumno 2</li>
-            <li>Alumno 3</li>
-            <li>Alumno 4</li>
-            <li>Alumno 5</li>
+            <% alumnos.forEach((alumno, index) => { %> <!-- Itera sobre los alumnos -->
+              <li>
+                <p><%= alumno.dataValues.nombre %></p> <!-- Nombre del alumno -->
+                <label for="cuatrimestre-<%= alumno.persona_id %>">Cuatrimestre:</label>
+                <select id="cuatrimestre-<%= alumno.persona_id %>" name="cuatrimestre-<%= alumno.persona_id %>" required>
+                  <option value="" disabled selected>Seleccionar</option>
+                  <option value="1">1er Cuatrimestre</option>
+                  <option value="2">2do Cuatrimestre</option>
+                </select>
+      
+                <label for="informe-<%= alumno.persona_id %>">Informe:</label>
+                <select id="informe-<%= alumno.persona_id %>" name="informe-<%= alumno.persona_id %>" required>
+                  <option value="" disabled selected>Seleccionar</option>
+                  <option value="1">Informe 1</option>
+                  <option value="2">Informe 2</option>
+                  <option value="3">Nota final</option>
+                </select>
+      
+                <label for="nota-<%= alumno.persona_id %>">Nota:</label>
+                <input type="number" id="nota-<%= alumno.persona_id %>" name="nota-<%= alumno.persona_id %>" min="0" max="10" placeholder="Nota" required/>
+              </li>
+            <% }) %>
           </ul>
-        </div>
-
-        <div class="grades-column">
-          <h3>Notas</h3>
-          <ul>
-            <li>
-              <span>8</span>
-              <button class="edit-btn" onclick="editNote()">Editar</button>
-            </li>
-            <li>
-              <span>7</span>
-              <button class="edit-btn" onclick="editNote()">Editar</button>
-            </li>
-            <li>
-              <span>9</span>
-              <button class="edit-btn" onclick="editNote()">Editar</button>
-            </li>
-            <li>
-              <span>6</span>
-              <button class="edit-btn" onclick="editNote()">Editar</button>
-            </li>
-            <li>
-              <span>10</span>
-              <button class="edit-btn" onclick="editNote()">Editar</button>
-            </li>
-          </ul>
-        </div>
+          <button type="submit" class="submit-btn">Guardar Notas</button>
+        </form>
       </div>
-    </main>
-
-    <script>
-      function editNote() {
-        alert("A futuro se agrega una funcion de poder modificar la nota");
-      }
-    </script>
-  </body>
+    </div>
+  </main>
+</body>
 </html>

@@ -2,6 +2,7 @@
 const express = require("express"); // framework para construir aplicaciones web
 const path = require("path"); // manejo de rutas
 const session = require("express-session"); // manejo de sesiones
+const methodOverride = require("method-override");
 
 // Crear la aplicación de Express
 const app = express();
@@ -22,6 +23,9 @@ app.use(session({
       maxAge: 1000 * 60 * 60 * 24 
   }
 }));
+
+// Permitir el uso de otros métodos HTTP en formularios
+app.use(methodOverride("_method"));
 
 // Configurar la carpeta pública para servir archivos estáticos
 const publico = path.resolve(__dirname, "../public");

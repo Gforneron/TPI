@@ -1,19 +1,28 @@
 <header>
-    <nav>
-        <ul class="nav-left">
-            <li>
+  <nav>
+      <ul class="nav-left">
+          <li>
               <a href="/home">
-                <img
-                  src="/images/LogoGuevara.png"
-                  alt="LogoGuevara"
-                  class="logo"
-                />
-                Colegio Dr. Ernesto Guevara
+                  <img
+                      src="/images/LogoGuevara.png"
+                      alt="LogoGuevara"
+                      class="logo"
+                  />
+                  Colegio Dr. Ernesto Guevara
               </a>
-            </li>
-          </ul>
-    </nav>
-    <ul class="nav-right">
-        <li><a href="perfil" class="fa-solid fa-user profile-icon"></a></li>
-    </ul>
+          </li>
+      </ul>
+  </nav>
+  <ul class="nav-right">
+      <li>
+          <a href="/perfil">
+              <img
+                  src="/images/usuarios/<%= usuario.foto_perfil %>"
+                  alt="Foto de Perfil"
+                  class="profile-image"
+              />
+              <span class="user-name"><%= usuario.nombre %></span>
+          </a>
+      </li>
+  </ul>
 </header>
