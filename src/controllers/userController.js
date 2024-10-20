@@ -64,7 +64,6 @@ userController.loginUser = async (req, res) => {
 
       if (isMatch) {
           req.session.usuarioLogueado = usuario;
-          console.log(req.session.usuarioLogueado);
           
           return res.redirect("/home");
       }else{
@@ -94,26 +93,24 @@ userController.newUser = async (req, res) => {
   try {
     let errores = validationResult(req);
 
-    const { nombre, correo, password, confirmed } = req.body;
-
-    // Verifica si las contraseñas coinciden
-    if (password !== confirmed) {
-      errores.errors.push({ msg: "Las contraseñas no coinciden." }); // Agrega el error a la lista
-    }
+    const { dni, nombre, correo, curso} = req.body;
+    
 
     // Crea el objeto del usuario solo si no hay errores
     const dataUser = {
+      persona_id: dni,
       nombre,
       correo,
-      contrasena: bcryptjs.hashSync(password, 8), // Encriptar solo si las contraseñas coinciden
+      contrasena: bcryptjs.hashSync(dni, 8), // Encriptar la contraseña, siendo la misma que el dni
       tipo_usuario_id: 1,
+      curso_id: curso,
       foto_perfil: 'user_predeterminado.jpg'
     };
 
     // Solo guarda el usuario si no hay errores
     if (errores.isEmpty()) {
       await db.Persona.create(dataUser);
-      return res.redirect("/");
+      return res.redirect("gestion_usuarios");
     } else {
       return res.render("register", { errors: errores.array(), old: req.body }); // Renderiza la vista de registro con errores
     }

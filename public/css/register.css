@@ -64,17 +64,23 @@ label {
     color: #555;
 }
 
+input[type="number"], /* Agregamos estilos para input number */
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+select {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+    background-color: white; /* Fondo blanco para todos los campos */
 }
 
+select:hover {
+    border-color: #af4c4c;
+}
 button {
     width: 100%;
     padding: 12px;
@@ -108,4 +114,6 @@ button:hover {
     text-decoration: underline;
 }
 
-
+.profile-image{
+    width: 50px;
+}

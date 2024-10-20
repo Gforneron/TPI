@@ -7,7 +7,7 @@ const methodOverride = require("method-override");
 // Crear la aplicación de Express
 const app = express();
 
-const port = process.env.port || 8000;
+const port = process.env.port || 3030;
 
 // Middleware para analizar datos de formularios (application/x-www-form-urlencoded)
 app.use(express.urlencoded({ extended: true }));
@@ -47,4 +47,4 @@ app.use((req, res, next) => {
   });
 
 // Levantar servidor
-app.listen(port, () => console.log("Corriendo servidor en: http://localhost:8000/"));
+app.listen(port, () => console.log("Corriendo servidor en: http://localhost:3030/"));

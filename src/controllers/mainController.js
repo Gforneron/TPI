@@ -31,18 +31,6 @@ mainController.notas = async (req, res) => {
       }]
     });
 
-    // Depuración
-    console.log("Usuario logueado:", JSON.stringify(usuario, null, 2));
-    
-    if (usuario && usuario.curso && usuario.curso.materias) {
-      usuario.curso.materias.forEach(materia => {
-        console.log(`Materia: ${materia.nombre_materia}`);
-        console.log(`Notas: ${JSON.stringify(materia.notas, null, 2)}`);
-      });
-    } else {
-      console.log("No se encontraron materias o notas para el usuario.");
-    }
-
     // Renderizar la vista 'notas'
     return res.render("notas.ejs", { usuario });
   } catch (error) {

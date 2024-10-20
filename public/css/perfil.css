@@ -90,8 +90,8 @@ input[disabled] {
     background-color: #a71d2a;
 }
 
-/* Estilo de la imagen de perfil */
-.profile-image {
+
+#profile-image{
     width: 150px;
     height: 150px;
     object-fit: cover;

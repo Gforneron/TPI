@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro</title>
-    <link rel="stylesheet" href="/css/register.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><img src="/images/LogoGuevara.png" alt="LogoGuevara" class="logo"></li>
-            </ul>
-        </nav>
-    </header>
+    <link rel="stylesheet" href="/css/register.css" />
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %>
 
     <div class="register-container">
-        <h2>Registro de Usuario</h2>
-        <form id="register" action="/register" method="POST">
-            <label for="nombre">Nombre Completo</label>
-            <input type="text" id="name" name="nombre" required>
+      <h2>Registro de Usuario</h2>
+      <form id="register" action="/register" method="POST">
+        <label for="dni">DNI</label>
+        <input type="number" id="dni" name="dni" required />
 
-            <label for="correo">Correo Electrónico</label>
-            <input type="email" id="email" name="correo" required>
+        <label for="nombre">Nombre Completo</label>
+        <input type="text" id="name" name="nombre" required />
 
-            <label for="contrasena">Contraseña</label>
-            <input type="password" id="password" name="password" required>
+        <label for="correo">Correo Electrónico</label>
+        <input type="email" id="email" name="correo" required />
 
-            <label for="confirm-password">Confirmar Contraseña</label>
-            <input type="password" id="confirm-password" name="confirmed" required>
+        <label for="curso">Curso</label>
+        <select id="curso" name="curso">
+          <option value="" disabled selected>Selecciona un curso</option>
+          <% for (let i = 1; i <= 27; i++) { %>
+          <option value="<%= i %>">Curso <%= i %></option>
+          <% } %>
+        </select>
 
-            <button type="submit">Registrarse</button>
-        </form>
+        <button type="submit">Registrarse</button>
+      </form>
     </div>
-</body>
+  </body>
 </html>
