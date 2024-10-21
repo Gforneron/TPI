@@ -16,18 +16,20 @@
     <div class="students-grid">
       <div class="student-column">
         <h3>Alumnos</h3>
-        <form id="grades-form" method="POST" action="">
+        <form id="grades-form" method="POST" action="/guardar-notas/<%= curso.curso_id %>/<%= materia.materia_id %>">
           <ul>
             <% alumnos.forEach((alumno, index) => { %> <!-- Itera sobre los alumnos -->
               <li>
                 <p><%= alumno.dataValues.nombre %></p> <!-- Nombre del alumno -->
+
+                <!-- Cambiar name para cuatrimestre -->
                 <label for="cuatrimestre-<%= alumno.persona_id %>">Cuatrimestre:</label>
                 <select id="cuatrimestre-<%= alumno.persona_id %>" name="cuatrimestre-<%= alumno.persona_id %>" required>
                   <option value="" disabled selected>Seleccionar</option>
                   <option value="1">1er Cuatrimestre</option>
                   <option value="2">2do Cuatrimestre</option>
                 </select>
-      
+
                 <label for="informe-<%= alumno.persona_id %>">Informe:</label>
                 <select id="informe-<%= alumno.persona_id %>" name="informe-<%= alumno.persona_id %>" required>
                   <option value="" disabled selected>Seleccionar</option>
@@ -35,7 +37,7 @@
                   <option value="2">Informe 2</option>
                   <option value="3">Nota final</option>
                 </select>
-      
+
                 <label for="nota-<%= alumno.persona_id %>">Nota:</label>
                 <input type="number" id="nota-<%= alumno.persona_id %>" name="nota-<%= alumno.persona_id %>" min="0" max="10" placeholder="Nota" required/>
               </li>

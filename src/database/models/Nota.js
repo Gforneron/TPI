@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        valor: {
+        nota: {
             type: DataTypes.FLOAT,
             allowNull: false
         },

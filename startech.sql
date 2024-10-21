@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2024 a las 01:17:17
+-- Tiempo de generación: 21-10-2024 a las 09:59:30
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -152,18 +152,17 @@ CREATE TABLE `nota` (
   `persona_id` int(11) DEFAULT NULL,
   `materia_id` int(11) DEFAULT NULL,
   `curso_id` int(11) DEFAULT NULL,
-  `nota` decimal(5,2) NOT NULL
+  `nota` decimal(5,2) NOT NULL,
+  `cuatrimestre` int(11) NOT NULL,
+  `informe` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `nota`
 --
 
-INSERT INTO `nota` (`nota_id`, `persona_id`, `materia_id`, `curso_id`, `nota`) VALUES
-(1, 45888806, 1, 25, 10.00),
-(2, 45888806, 6, 25, 8.00),
-(3, 45888815, 4, 25, 10.00),
-(4, 45888815, 6, 25, 8.00);
+INSERT INTO `nota` (`nota_id`, `persona_id`, `materia_id`, `curso_id`, `nota`, `cuatrimestre`, `informe`) VALUES
+(33, 45888806, 1, 25, 8.00, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -172,23 +171,21 @@ INSERT INTO `nota` (`nota_id`, `persona_id`, `materia_id`, `curso_id`, `nota`) V
 --
 
 CREATE TABLE `persona` (
-  `persona_id` int(11) NOT NULL,
+  `persona_id` int(255) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `correo` varchar(100) NOT NULL,
   `contrasena` varchar(100) NOT NULL,
   `tipo_usuario_id` int(11) DEFAULT NULL,
-  `curso_id` int(11) DEFAULT NULL
+  `curso_id` int(11) DEFAULT NULL,
+  `foto_perfil` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `persona`
 --
 
-INSERT INTO `persona` (`persona_id`, `nombre`, `correo`, `contrasena`, `tipo_usuario_id`, `curso_id`) VALUES
-(1, 'administrador', 'gonzaloforneron12@gmail.com', 'Abc123456', 2, NULL),
-(45888806, 'gonzalo forneron', 'gonzaloforneron@gmail.com', 'Abc123456', 1, 25),
-(45888815, 'gonzalo forneron', 'forneron@gmail.com', '$2a$08$BW4/tdQ1C7ozcur0A4LcLOUkMnFMptPHWS7EPD9I5BW7P1/Z6Y6p.', 1, 25),
-(45888816, 'juan gomez', 'pedro@gmail.com', '$2a$08$VKtRgN.3/R9H2Tsa/gglBuuXJzOSss/w9fCXWH0lvw3SQHYNbQX5e', 1, 26);
+INSERT INTO `persona` (`persona_id`, `nombre`, `correo`, `contrasena`, `tipo_usuario_id`, `curso_id`, `foto_perfil`) VALUES
+(45888806, 'gonzalo forneron', 'gonzalo@gmail.com', '$2a$08$s5tGtk.KcqV7ziPyhPgEzuKImfya2fTe9mJIT4yVb6MMDhUKcGdmi', 1, 25, 'user_predeterminado.jpg');
 
 -- --------------------------------------------------------
 
@@ -271,25 +268,19 @@ ALTER TABLE `curso`
 -- AUTO_INCREMENT de la tabla `curso_materia`
 --
 ALTER TABLE `curso_materia`
-  MODIFY `curso_materia_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `curso_materia_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `materia_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `materia_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `nota`
 --
 ALTER TABLE `nota`
-  MODIFY `nota_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT de la tabla `persona`
---
-ALTER TABLE `persona`
-  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45888817;
+  MODIFY `nota_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`

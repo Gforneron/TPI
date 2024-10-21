@@ -112,4 +112,49 @@ admincontroller.vista_materias = async (req, res) => {
   }
 };
 
+admincontroller.guardarNotas = async (req, res) => {
+  try {
+    const { cursoId, materiaId } = req.params;
+    const notas = req.body;
+
+    // Extraer los IDs de los alumnos (claves del req.body que empiezan con 'nota-')
+    const alumnosIds = Object.keys(notas)
+      .filter(key => key.startsWith('nota-'))
+      .map(key => key.split('-')[1]);
+
+    // Recorrer cada alumno y guardar sus notas correspondientes
+    for (const alumnoId of alumnosIds) {
+      const cuatrimestre = notas[`cuatrimestre-${alumnoId}`];
+      const informe = notas[`informe-${alumnoId}`];
+      const nota = notas[`nota-${alumnoId}`];
+
+      if (cuatrimestre && informe && nota) {
+        
+        // Guardar los datos en la base de datos
+        await db.Nota.create({
+          persona_id: alumnoId,
+          materia_id: materiaId,
+          curso_id: cursoId,
+          nota: nota,
+          cuatrimestre: cuatrimestre,
+          informe: informe
+        });
+      } else {
+        throw new Error(`Datos incompletos para guardar la nota del alumno ${alumnoId}`);
+        
+      }
+    }
+
+    // Redirigir o responder con éxito
+    res.redirect(`/materias/${cursoId}/${materiaId}`);
+  } catch (error) {
+    console.error('Error al guardar las notas:', error.message);
+    res.status(500).send('Error en el servidor al guardar las notas');
+  }
+};
+
+
+
+
+
 module.exports = admincontroller;
