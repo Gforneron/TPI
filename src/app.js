@@ -9,8 +9,8 @@ const app = express();
 
 const port = process.env.port || 3030;
 
-// Middleware para analizar datos de formularios (application/x-www-form-urlencoded)
-app.use(express.urlencoded({ extended: true }));
+// Middlewares
+app.use(express.urlencoded({ extended: true }));   //para analizar datos de formularios (application/x-www-form-urlencoded)
 
 // Middleware para analizar datos JSON (application/json)
 app.use(express.json());

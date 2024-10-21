@@ -9,7 +9,6 @@ admincontroller.gestion_curso = async (req, res) => {
     const cursos = await db.Curso.findAll();
     usuario = req.session.usuarioLogueado;  
 
-
     // Renderiza la vista y pasa los cursos como datos
     res.render("gestion_curso", { cursos, usuario });
   } catch (error) {

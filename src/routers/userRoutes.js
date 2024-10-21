@@ -3,6 +3,9 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 
+// Llamada de middleware
+const middleware = require("../middlewares/Session");
+
 // Llamada de controller
 const userController = require("../controllers/userController");
 
@@ -18,17 +21,17 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 //editado de perfil
-router.get("/edit_perfil", userController.edit_perfil); // Retorno de vista
+router.get("/edit_perfil", middleware, userController.edit_perfil); // Retorno de vista
 router.post("/edit_perfil/:id", upload.single("foto_perfil"), userController.updatePerfil); // Editar perfil
 
-router.get("/perfil", userController.perfil); // retorno de Página de perfils
+router.get("/perfil", middleware, userController.perfil); // retorno de Página de perfils
 
 // Login
 router.get("/", userController.login); // Retorno de pagina login
 router.post("/", userController.loginUser); // Funcionalidad del login
 
 // Register
-router.get("/register", userController.register); //retorno del formulario register
+router.get("/register", middleware, userController.register); //retorno del formulario register
 router.post("/register",upload.single("user_predeterminado"), userController.newUser); // funcionalidad del formulario register
 
 // cerrado de sesion
