@@ -5,6 +5,8 @@ const multer = require("multer");
 
 // Llamada de middleware
 const middleware = require("../middlewares/Session");
+const alumnado = require("../middlewares/alumnado");
+
 
 // Llamada de controller
 const userController = require("../controllers/userController");
@@ -31,7 +33,7 @@ router.get("/", userController.login); // Retorno de pagina login
 router.post("/", userController.loginUser); // Funcionalidad del login
 
 // Register
-router.get("/register", middleware, userController.register); //retorno del formulario register
+router.get("/register", middleware, alumnado, userController.register); //retorno del formulario register
 router.post("/register",upload.single("user_predeterminado"), userController.newUser); // funcionalidad del formulario register
 
 // cerrado de sesion
