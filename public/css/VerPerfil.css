@@ -3,7 +3,7 @@
 /* Estilo del contenido */
 .content-container {
     margin-left: 30%;
-    margin-top: 5%;
+    margin-top: 7%;
     padding: 30px;
     background-color: white;
     border-radius: 12px;
@@ -130,4 +130,13 @@ input[type="tel"]:focus {
 .btn-submit:hover {
     background-color: #45a049;
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+#cerrar{
+    background-color: #c82333;
+    margin-left: 1rem;
+}
+
+#cerrar:hover{
+    background-color: #e62b3e;
 }

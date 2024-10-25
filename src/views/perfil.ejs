@@ -22,14 +22,16 @@
         />
         <div class="profile-details">
           <h2><%= usuario.nombre %></h2>
-          <p><strong>DNI:</strong> <%=usuario.persona_id%> </p>
-          <p><strong>Email:</strong> <%=usuario.correo%> </p>
-          <p><strong>Curso:</strong> <%= usuario.curso_id %></p>
+          <p><strong>DNI:</strong> <%=usuario.persona_id%></p>
+          <p><strong>Email:</strong> <%=usuario.correo%></p>
+          <p>
+            <strong>Curso:</strong> <%= usuario.curso.dataValues.nombre_curso %>
+          </p>
           <a href="edit_perfil" class="btn-edit">Editar Perfil</a>
-          <a href="/cerrar" class="btn-edit">Cerrar Sesión</a>
+          <a href="/cerrar" class="btn-edit" id="cerrar">Cerrar Sesión</a>
         </div>
       </div>
     </main>
-    
+    <%- include('partials/footer.ejs') %>
   </body>
 </html>

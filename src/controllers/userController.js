@@ -94,7 +94,16 @@ userController.loginUser = async (req, res) => {
 
 // Retorna la vista del perfil
 userController.perfil = async (req, res) => {
-  usuario = req.session.usuarioLogueado;
+  const usuario = await db.Persona.findOne({
+    where: { persona_id: req.session.usuarioLogueado.persona_id },
+    include: [
+      {
+        model: db.Curso,
+        as: "curso",
+        attributes: ["nombre_curso"],
+      },
+    ],
+  });
   return res.render("perfil.ejs", { usuario });
 };
 
