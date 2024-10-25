@@ -9,8 +9,8 @@ const userController = {};
 
 // Retorna la vista del editado de perfil
 userController.edit_perfil = async (req, res) => {
-  usuario = req.session.usuarioLogueado;  
-  return res.render("edit_perfil.ejs", {usuario});
+  usuario = req.session.usuarioLogueado;
+  return res.render("edit_perfil.ejs", { usuario });
 };
 
 // Procesar el formulario de editar perfil
@@ -44,75 +44,91 @@ userController.updatePerfil = async (req, res) => {
 
 // Retorna la vista de pag de login
 userController.login = async (req, res) => {
-  return res.render("login.ejs");
+  return res.render("login.ejs", { errors: {}, oldData: {} });
 };
 
 // Funcionalidad de incio de sesion
 userController.loginUser = async (req, res) => {
-  try {    
-      const { correo, contrasena } = req.body;
+  try {
+    const errors = validationResult(req); // Obtiene los errores de validación
 
-      // Busca al usuario en la base de datos
-      const usuario = await db.Persona.findOne({ where: { correo } });
+    if (!errors.isEmpty()) {
+      // Si hay errores de validación, renderiza la vista de login con los errores
+      return res.render("login", {
+        errors: errors.mapped(),
+        oldData: req.body, // Mantiene los datos ingresados
+      });
+    }
 
-      if (!usuario) {
-          return res.render("login", { error: "Usuario no encontrado." });
-      }
+    const { correo, contrasena } = req.body;
 
-      // Verifica la contraseña
-      const isMatch = bcryptjs.compareSync(contrasena, usuario.contrasena);
+    // Busca al usuario en la base de datos
+    const usuario = await db.Persona.findOne({ where: { correo } });
 
-      if (isMatch) {
-          req.session.usuarioLogueado = usuario;
-          
-          return res.redirect("/home");
-      }else{
-        return res.send("Contraseña incorrecta");
-      }
+    if (!usuario) {
+      return res.render("login", {
+        error: "Usuario no encontrado.",
+        errors: {},
+        oldData: req.body,
+      });
+    }
 
+    // Verifica la contraseña
+    const isMatch = bcryptjs.compareSync(contrasena, usuario.contrasena);
+
+    if (isMatch) {
+      req.session.usuarioLogueado = usuario;
+      return res.redirect("/home");
+    } else {
+      return res.render("login", {
+        error: "Contraseña incorrecta.",
+        errors: {},
+        oldData: req.body,
+      });
+    }
   } catch (error) {
-      console.error("Error al iniciar sesión:", error);
-      res.status(500).render("error", { message: "Error interno del servidor." });
-  }  
-
-  
+    console.error("Error al iniciar sesión:", error);
+    res.status(500).render("error", { message: "Error interno del servidor." });
+  }
 };
 
 // Retorna la vista del perfil
 userController.perfil = async (req, res) => {
   usuario = req.session.usuarioLogueado;
-  return res.render("perfil.ejs", {usuario});
+  return res.render("perfil.ejs", { usuario });
 };
 
 // Retorna la vista del registro
 userController.register = async (req, res) => {
-  return res.render("register.ejs");
+  return res.render("register", { errors: [], old: {} });
 };
 
 userController.newUser = async (req, res) => {
   try {
     let errores = validationResult(req);
 
-    const { dni, nombre, correo, curso} = req.body;
-    
+    const { dni, nombre, correo, curso, usuario } = req.body;
 
-    // Crea el objeto del usuario solo si no hay errores
     const dataUser = {
       persona_id: dni,
       nombre,
       correo,
-      contrasena: bcryptjs.hashSync(dni, 8), // Encriptar la contraseña, siendo la misma que el dni
-      tipo_usuario_id: 1,
+      contrasena: bcryptjs.hashSync(dni, 8),
+      tipo_usuario_id: usuario,
       curso_id: curso,
-      foto_perfil: 'user_predeterminado.jpg'
+      foto_perfil: "user_predeterminado.jpg",
     };
 
-    // Solo guarda el usuario si no hay errores
+    // Si no hay errores, guarda el usuario
     if (errores.isEmpty()) {
       await db.Persona.create(dataUser);
       return res.redirect("gestion_usuarios");
     } else {
-      return res.render("register", { errors: errores.array(), old: req.body }); // Renderiza la vista de registro con errores
+      // Mapea los errores y renderiza la vista con los errores específicos
+      return res.render("register", {
+        errors: errores.mapped(), // Mapeo de errores
+        old: req.body, // Mantén los datos ingresados
+      });
     }
   } catch (error) {
     console.error("Error al registrar el usuario:", error);
@@ -122,12 +138,36 @@ userController.newUser = async (req, res) => {
 
 // Cerrar sesión
 userController.cerrar = (req, res) => {
-  req.session.destroy(err => {
-      if (err) {
-          console.error("Error al cerrar sesión:", err);
-          return res.status(500).render("error", { message: "Error al cerrar sesión." });
-      }
-      return res.redirect("/"); // Redirige a la página principal
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error al cerrar sesión:", err);
+      return res
+        .status(500)
+        .render("error", { message: "Error al cerrar sesión." });
+    }
+    return res.redirect("/"); // Redirige a la página principal
   });
 };
+
+// Eliminado de usuarios
+
+userController.deleteUser = async (req, res) => {
+  try {
+    const usuarioId = req.params.id;
+    const usuario = await db.Persona.findByPk(usuarioId);
+
+    if (usuario) {
+      await usuario.destroy();
+      return res.redirect("/gestion_usuarios"); // Redirige a la gestión de usuarios
+    } else {
+      return res
+        .status(404)
+        .render("error", { message: "Usuario no encontrado." });
+    }
+  } catch (error) {
+    console.error("Error al eliminar usuario:", error);
+    res.status(500).render("error", { message: "Error interno del servidor." });
+  }
+};
+
 module.exports = userController;

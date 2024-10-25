@@ -11,24 +11,78 @@
 
     <div class="register-container">
       <h2>Registro de Usuario</h2>
+
       <form id="register" action="/register" method="POST">
+        <!-- DNI -->
         <label for="dni">DNI</label>
-        <input type="number" id="dni" name="dni" required />
+        <input 
+          type="number" 
+          id="dni" 
+          name="dni" 
+          value="<%= old && old.dni ? old.dni : '' %>" 
+          class="<%= errors && errors.dni ? 'input-error' : '' %>"
+        />
+        <!-- Error de DNI -->
+        <% if (errors && errors.dni) { %>
+          <span class="error-message"><%= errors.dni.msg %></span>
+        <% } %>
 
+        <!-- Nombre Completo -->
         <label for="nombre">Nombre Completo</label>
-        <input type="text" id="name" name="nombre" required />
+        <input 
+          type="text" 
+          id="name" 
+          name="nombre" 
+          value="<%= old && old.nombre ? old.nombre : '' %>" 
+          class="<%= errors && errors.nombre ? 'input-error' : '' %>"
+        />
+        <!-- Error de Nombre -->
+        <% if (errors && errors.nombre) { %>
+          <span class="error-message"><%= errors.nombre.msg %></span>
+        <% } %>
 
+        <!-- Correo Electrónico -->
         <label for="correo">Correo Electrónico</label>
-        <input type="email" id="email" name="correo" required />
+        <input 
+          type="email" 
+          id="email" 
+          name="correo" 
+          value="<%= old && old.correo ? old.correo : '' %>" 
+          class="<%= errors && errors.correo ? 'input-error' : '' %>"
+        />
+        <!-- Error de Correo -->
+        <% if (errors && errors.correo) { %>
+          <span class="error-message"><%= errors.correo.msg %></span>
+        <% } %>
 
+        <!-- Curso -->
         <label for="curso">Curso</label>
-        <select id="curso" name="curso">
+        <select id="curso" name="curso" class="<%= errors && errors.curso ? 'input-error' : '' %>">
           <option value="" disabled selected>Selecciona un curso</option>
           <% for (let i = 1; i <= 27; i++) { %>
-          <option value="<%= i %>">Curso <%= i %></option>
+            <option value="<%= i %>" <%= old && old.curso == i ? 'selected' : '' %>>Curso <%= i %></option>
           <% } %>
         </select>
+        <!-- Error de Curso -->
+        <% if (errors && errors.curso) { %>
+          <span class="error-message"><%= errors.curso.msg %></span>
+        <% } %>
 
+          <!-- Tipo de Usuario -->
+<label for="usuario">Tipo de usuario</label>
+<select id="usuario" name="usuario" class="<%= errors && errors.usuario ? 'input-error' : '' %>">
+  <option value="1" <%= (!old || !old.usuario || old.usuario == 1) ? 'selected' : '' %>>Alumno</option>
+  <option value="2" <%= old && old.usuario == 2 ? 'selected' : '' %>>Administrador</option>
+  <option value="3" <%= old && old.usuario == 3 ? 'selected' : '' %>>Alumnado</option>
+</select>
+<!-- Error de Tipo de Usuario -->
+<% if (errors && errors.usuario) { %>
+  <span class="error-message"><%= errors.usuario.msg %></span>
+<% } %>
+
+
+
+        <!-- Botón de envío -->
         <button type="submit">Registrarse</button>
       </form>
     </div>

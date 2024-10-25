@@ -16,7 +16,7 @@
     <div class="students-grid">
       <div class="student-column">
         <h3>Alumnos</h3>
-        <form id="grades-form" method="POST" action="/guardar-notas/<%= curso.curso_id %>/<%= materia.materia_id %>">
+        <form id="grades-form" method="POST" action="/curso/<%= curso.curso_id %>/materia/<%= materia.materia_id %>">
           <ul>
             <% alumnos.forEach((alumno, index) => { %> <!-- Itera sobre los alumnos -->
               <li>

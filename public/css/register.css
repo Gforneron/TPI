@@ -78,9 +78,22 @@ select {
     background-color: white; /* Fondo blanco para todos los campos */
 }
 
-select:hover {
-    border-color: #af4c4c;
+input:focus, select:focus {
+    border-color: #d13030;
 }
+
+input.input-error,
+select.input-error {
+    border-color: #ff6b6b;
+    background-color: #ffe6e6;
+}
+
+.error-message {
+    color: #ff6b6b;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
 button {
     width: 100%;
     padding: 12px;
