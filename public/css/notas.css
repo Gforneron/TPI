@@ -1,50 +1,68 @@
 @import url(./estilo_generales.css);
 
-
 /* Estilo del contenedor de contenido principal */
 .content-container {
-    margin-left: 17%; 
-    margin-top: 7%; 
-    padding: 20px;
-    width: calc(100% - 250px);
+  margin-left: 17%;
+  margin-top: 7%;
+  padding: 20px;
+  width: calc(100% - 250px);
 }
 
-/* Estilo de la tabla */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px auto;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Estilo general para todas las celdas */
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+  vertical-align: middle; /* Asegura que el contenido esté centrado verticalmente */
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-    font-size: 14px;
+/* Estilo especial para celdas con colspan para mantener consistencia */
+td[colspan="2"],
+td[colspan="3"],
+td[colspan="4"] {
+  background-color: #f9f9f9; /* Color de fondo claro */
+  font-weight: bold; /* Resalta un poco para diferenciación visual */
+  color: #555; /* Color de texto más oscuro */
 }
 
-td[colspan="2"], td[colspan="3"], td[colspan="4"] {
-    background-color: #f9f9f9;
-}
-
+/* Asegurando que las celdas con rowspan tengan el mismo estilo */
 td[rowspan="3"] {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
+  font-weight: bold;
+  color: #555;
+  vertical-align: middle; /* Asegura que el contenido esté centrado verticalmente */
 }
 
-/* Estilo de los encabezados de fila */
+/* Estilo de las filas alternadas para mejor visualización */
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
+/* Efecto de hover en las filas */
 tr:hover {
-    background-color: #eaeaea;
+  background-color: #eaeaea;
 }
 
-/* Estilo de los campos de observaciones */
-td[colspan="15"] {
-    text-align: left;
-    padding: 10px;
+/* Estilo de las celdas vacías que contienen guiones (-) */
+td:empty {
+  background-color: #f9f9f9;
+  color: #999; /* Color gris para los guiones */
+  font-style: italic; /* Opción para diferenciar los guiones visualmente */
+}
+
+/* Estilo para que las celdas con colspan rellenen correctamente el espacio */
+td[colspan] {
+  text-align: center; /* Alinea todo el texto en el centro */
+}
+
+/* Asegura que el ancho de las celdas se distribuya proporcionalmente */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

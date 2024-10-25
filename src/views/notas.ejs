@@ -13,7 +13,7 @@
         <table>
             <tbody>
                 <tr>
-                    <td colspan="16">COLEGIO PROVINCIAL DR. ERNESTO GUEVARA</td>
+                    <td colspan="26">COLEGIO PROVINCIAL DR. ERNESTO GUEVARA</td>
                 </tr>
                 <tr>
                     <td colspan="3">Apellido y nombre:</td>
@@ -25,16 +25,24 @@
                 </tr>
                 <tr>
                     <td colspan="2">Ciclo Superior de la ESO</td>
-
-                    <% if (usuario.curso && usuario.curso.materias) { %>
+                    <% 
+                    const numMaterias = usuario.curso && usuario.curso.materias ? usuario.curso.materias.length : 0;
+                    const espaciosRestantes = 12 - numMaterias;
+                    if (usuario.curso && usuario.curso.materias) { 
+                    %>
                         <% usuario.curso.materias.forEach(materia => { %>
                             <td><%= materia.nombre_materia %></td> <!-- Muestra el nombre de la materia -->
                         <% }); %>
+                        <% for (let i = 0; i < espaciosRestantes; i++) { %>
+                            <td colspan="2">-</td> <!-- Espacios vacíos -->
+                        <% } %>
                     <% } else { %>
-                        <td colspan="14">No se encontraron materias</td>
+                        <% for (let i = 0; i < 12; i++) { %>
+                            <td colspan="2">-</td> <!-- Cuando no hay materias asignadas -->
+                        <% } %>
                     <% } %>
                 </tr>
-
+                
                 <% const informes = ['1° informe', '2° informe']; %>
                 <% ['Primer cuatrimestre', 'Segundo cuatrimestre'].forEach((cuatrimestre, cuatrimestreIndex) => { %>
                     <tr>
@@ -50,12 +58,17 @@
                                         %>
                                             <%= nota.dataValues.nota %> <!-- Muestra la nota si existe -->
                                         <% } else { %>
-                                            - <!-- Muestra un mensaje si no hay nota -->
+                                            - <!-- Si no hay nota -->
                                         <% } %>
                                     </td>
                                 <% }); %>
+                                <% for (let i = 0; i < espaciosRestantes; i++) { %>
+                                    <td colspan="2">-</td> <!-- Espacios vacíos para completar las 12 materias -->
+                                <% } %>
                             <% } else { %>
-                                <td colspan="14">No se encontraron materias</td>
+                                <% for (let i = 0; i < 12   ; i++) { %>
+                                    <td colspan="2">-</td> <!-- Cuando no hay materias asignadas -->
+                                <% } %>
                             <% } %>
                         </tr>
                     <% }); %>
@@ -70,12 +83,17 @@
                                     %>
                                         <%= notaFinal.dataValues.nota %> <!-- Muestra la nota final si existe -->
                                     <% } else { %>
-                                        - <!-- Muestra un mensaje si no hay nota -->
+                                        - <!-- Si no hay nota final -->
                                     <% } %>
                                 </td>
                             <% }); %>
+                            <% for (let i = 0; i < espaciosRestantes; i++) { %>
+                                <td colspan="2">-</td> <!-- Espacios vacíos para completar las 12 materias -->
+                            <% } %>
                         <% } else { %>
-                            <td colspan="14">No se encontraron materias</td>
+                            <% for (let i = 0; i < 12; i++) { %>
+                                <td colspan="2">-</td> <!-- Cuando no hay materias asignadas -->
+                            <% } %>
                         <% } %>
                     </tr>
                 <% }); %>
