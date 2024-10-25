@@ -100,12 +100,15 @@ userController.perfil = async (req, res) => {
 
 // Retorna la vista del registro
 userController.register = async (req, res) => {
-  return res.render("register", { errors: [], old: {} });
+  const cursos = await db.Curso.findAll();
+  return res.render("register", { errors: [], old: {}, cursos });
 };
 
 userController.newUser = async (req, res) => {
   try {
     let errores = validationResult(req);
+
+    const cursos = await db.Curso.findAll();
 
     const { dni, nombre, correo, curso, usuario } = req.body;
 
@@ -126,6 +129,7 @@ userController.newUser = async (req, res) => {
     } else {
       // Mapea los errores y renderiza la vista con los errores específicos
       return res.render("register", {
+        cursos,
         errors: errores.mapped(), // Mapeo de errores
         old: req.body, // Mantén los datos ingresados
       });
@@ -150,7 +154,6 @@ userController.cerrar = (req, res) => {
 };
 
 // Eliminado de usuarios
-
 userController.deleteUser = async (req, res) => {
   try {
     const usuarioId = req.params.id;
