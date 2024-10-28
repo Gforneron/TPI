@@ -52,22 +52,6 @@ admincontroller.gestion_materias = async (req, res) => {
 admincontroller.gestion_usuarios = async (req, res) => {
   try {
     usuario = req.session.usuarioLogueado;
-    // Obtener todos los usuarios, incluyendo el curso y el tipo de usuario
-    const usuarios = await db.Persona.findAll({
-      include: [
-        {
-          model: db.TipoUsuario,
-          as: "tipoUsuario",
-          attributes: ["tipo_usuario_id", "rol"],
-        },
-        {
-          model: db.Curso,
-          as: "curso",
-          attributes: ["curso_id", "nombre_curso", "orientacion"],
-        },
-      ],
-    });
-
     // Renderizar la vista y pasarle los usuarios
     return res.render("gestion_usuarios.ejs", {
       usuario,
@@ -155,7 +139,7 @@ admincontroller.guardarNotas = async (req, res) => {
     }
 
     // Redirigir o responder con éxito
-    res.redirect(`/materias/${cursoId}/${materiaId}`);
+    res.redirect(`/gestion_materias/${cursoId}`);
   } catch (error) {
     console.error("Error al guardar las notas:", error.message);
     res.status(500).send("Error en el servidor al guardar las notas");

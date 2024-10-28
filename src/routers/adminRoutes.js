@@ -10,7 +10,7 @@ const division = require("../middlewares/division");
 
 
 router.get('/curso/:cursoId/materia/:materiaId', middlewareSession, alumnado, adminController.vista_materias);
-router.post('/guardar-notas/:cursoId/:materiaId', adminController.guardarNotas);
+router.post('/curso/:cursoId/materia/:materiaId', adminController.guardarNotas);
 
 router.get('/gestion_curso', middlewareSession, alumnado, adminController.gestion_curso); // Gestión de cursos
 router.get('/gestion_materias/:id', middlewareSession, alumnado, adminController.gestion_materias); // Gestión de materias

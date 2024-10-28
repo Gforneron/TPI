@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2024 a las 09:59:30
+-- Tiempo de generación: 28-10-2024 a las 16:20:22
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -130,16 +130,16 @@ CREATE TABLE `materia` (
 --
 
 INSERT INTO `materia` (`materia_id`, `nombre_materia`) VALUES
-(1, 'matematicas septimo'),
-(2, 'ingles tecnico septimo'),
-(3, 'marco juridico y derechos del trabajo'),
-(4, 'asistencia 2'),
-(5, 'autogestion'),
-(6, 'hardware 4'),
-(7, 'practicas profesionalizantes 2'),
-(8, 'programacion'),
-(9, 'redes 3'),
-(10, 'arduino 3');
+(1, 'Matemáticas Séptimo\r\n'),
+(2, 'ingles tecnico Séptimo\r\n'),
+(3, 'Marco Jurídico y derechos del trabajo'),
+(4, 'Asistencia 2'),
+(5, 'Autogestión'),
+(6, 'Hardware 4'),
+(7, 'Prácticas Profesionalizantes 2'),
+(8, 'Programación'),
+(9, 'Redes 3'),
+(10, 'Arduino 3');
 
 -- --------------------------------------------------------
 
@@ -162,7 +162,7 @@ CREATE TABLE `nota` (
 --
 
 INSERT INTO `nota` (`nota_id`, `persona_id`, `materia_id`, `curso_id`, `nota`, `cuatrimestre`, `informe`) VALUES
-(33, 45888806, 1, 25, 8.00, 1, 1);
+(46, 45888806, 4, 25, 2.00, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -185,7 +185,30 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`persona_id`, `nombre`, `correo`, `contrasena`, `tipo_usuario_id`, `curso_id`, `foto_perfil`) VALUES
-(45888806, 'gonzalo forneron', 'gonzalo@gmail.com', '$2a$08$s5tGtk.KcqV7ziPyhPgEzuKImfya2fTe9mJIT4yVb6MMDhUKcGdmi', 1, 25, 'user_predeterminado.jpg');
+(22222222, 'alumnado', 'alumnado@gmail.com', '$2a$08$bMxDgXABv2X9xxs3O/ro/OswoUXW3WJ0IO2MPSzY8hftUrvdHoC9.', 3, NULL, 'user_predeterminado.jpg'),
+(33333333, 'administrador', 'administrador@gmail.com', '$2a$08$ehQLcIux3p9dXws2n.epqeXia357jKNn2F2Pm0K83xYLd7m0wwHUC', 2, NULL, 'user_predeterminado.jpg'),
+(44102385, 'Pablo Abdala', 'abdala@gmail.com', '$2a$08$DbVVwS4e1LQM8ShC8lDKnuwlksePEnlMvjQ2LSAYHmqX4goCC4HdG', 1, 25, 'user_predeterminado.jpg'),
+(44256478, 'Mia Alvarez', 'alvarez@gmail.com', '$2a$08$5irEJsHzeFqKWq6mO579FuTAiAP4TmvTBPjSTYQQT8gGOl0W8DA1i', 1, 25, 'user_predeterminado.jpg'),
+(44399517, 'Tomas Avanzatti', 'avanzatti@gmail.com', '$2a$08$nuiIf98bAHFjYWmndAw0CeC3tBaLJd23pRQvI1zPl1ivh8xaVbBie', 1, 25, 'user_predeterminado.jpg'),
+(44518269, 'Pablo Celen', 'celen@gmail.com', '$2a$08$icoJO8kcQ9C9DcBmn6hPH.YyRno6NWda.WWUnaU5OrlfkhGuwJpmy', 1, 25, 'user_predeterminado.jpg'),
+(44626914, 'Eros Colivoro', 'colivoro@gmail.com', '$2a$08$DH3G.dkp4jel4eU4/dvYUOaHHVi1zWMRtDExIxsFDx77tHgI9OqOq', 1, 25, 'user_predeterminado.jpg'),
+(44735192, 'Agustin Colman', 'colman@gmail.com', '$2a$08$X4Bo4bMBM/gNdpTDW1NRK.KTV5kZ7aABzpCV5BpbfAHV.sqjHZUda', 1, 25, 'user_predeterminado.jpg'),
+(44899451, 'Lucas Curra', 'curra@gmail.com', '$2a$08$S7stHxYBydndIh3M1HIgbeLk/IpGbfO0XbGgNK9pzYh39T4IMiTAe', 1, 25, 'user_predeterminado.jpg'),
+(45103786, 'Tiziano Degiovanni', 'degiovanni@gmail.com', '$2a$08$vNTem.uJzFL5EPNXqKNEcuGvVrmOglODuWMJ69d7t6K/K.s/1s1/G', 1, 25, 'user_predeterminado.jpg'),
+(45245398, 'Lucas Diaz', 'diaz@gmail.com', '$2a$08$jZt8.SsXHgIYO/ukgzaSZ.TNfhqIIz4EVzB/FdIbV7fPpW3C.Yrzm', 1, 25, 'user_predeterminado.jpg'),
+(45362771, 'Micaela Gaudelli', 'gaudelli@gmail.com', '$2a$08$47EgXJsXGY/aks5ctJDtcu1/QZwf35YMfl3zwJyu4w9Mjkc62TtUm', 1, 25, 'user_predeterminado.jpg'),
+(45487650, 'Abril Martinez', 'abrilmartinez@gmail.com', '$2a$08$q7l19F2xyOaC/iTzu7dAw.WV9Fe2zEBCcoa7BXgQcsIkzbMi9W75i', 1, 25, 'user_predeterminado.jpg'),
+(45508329, 'Agustin Martinez', 'agustinmartinez@gmail.com', '$2a$08$9N6svmF2iHgkSJdSFjlwtOnbw61XDp4DFkSyDvxjMmKm.WfZ.GpBu', 1, 25, 'user_predeterminado.jpg'),
+(45689214, 'Antonio Martinez', 'antoniomartinez@gmail.com', '$2a$08$aTozkVrLbnq0CgcK7CPN9udOisT/u.VNJLjyLEuUjNfMkuPnL.rzu', 1, 25, 'user_predeterminado.jpg'),
+(45742930, 'Mariano Olivera', 'olivera@gmail.com', '$2a$08$n.tjkmG3j.IByfEH5.f2ju1kbd/vwn420NsiOyMA7t7BzsFClrofO', 1, 25, 'user_predeterminado.jpg'),
+(45852481, 'Julio Quintana', 'quintana@gmail.com', '$2a$08$bQ.uzUD7VGTfkDkmuAMsM.hFd6en2sKA5B.lsppCuAvqmdFTvh9xK', 1, 25, 'user_predeterminado.jpg'),
+(45888806, 'Gonzalo Forneron', 'gonzalo@gmail.com', '$2a$08$s5tGtk.KcqV7ziPyhPgEzuKImfya2fTe9mJIT4yVb6MMDhUKcGdmi', 2, 25, 'foto_perfil-1729884332749.jpg'),
+(45913672, 'Yuliana Ramirez', 'ramirez@gmail.com', '$2a$08$dp9LEu40lO7oqYeAhlnrY.JDjdvrP1rOCWfGXCCusjdupy1rggyTm', 1, 25, 'user_predeterminado.jpg'),
+(46045183, 'Mario Rivero', 'rivero@gmail.com', '$2a$08$Xi.jdir.6OjbnJ3nTE/bxu6ecSc7TOXEkddZAz/Is0zCGrrfAv9pm', 1, 25, 'user_predeterminado.jpg'),
+(46112590, 'Santiago Sanchez', 'sanchez@gmail.com', '$2a$08$hYWgZj5qnSGd9dowU/L/LOlXpVQq98LqArwriiaREmp2A4iXpXPxS', 1, 25, 'user_predeterminado.jpg'),
+(46235467, 'Valentina Suarez', 'suarez@gmail.com', '$2a$08$xfhIwD9qWPiKb3WhdumjpOvz2eD74GsDbHsEIyuILCWIly.0bdiSe', 1, 25, 'user_predeterminado.jpg'),
+(46348712, 'Florencia Vergara', 'vergara@gmail.com', '$2a$08$jPcXY7e.dvR0IWkVIXobuu2AgbJ2ijG0y7TndL1atX4olAsxL842a', 1, 25, 'user_predeterminado.jpg'),
+(46470563, 'Jennifer Yapura', 'yapura@gmail.com', '$2a$08$qovrcm6wgr.J5IRZIUWG7.ilH/IX7KQsdNam21TUG1zBuFKcnVLWm', 1, 25, 'user_predeterminado.jpg');
 
 -- --------------------------------------------------------
 
@@ -280,7 +303,7 @@ ALTER TABLE `materia`
 -- AUTO_INCREMENT de la tabla `nota`
 --
 ALTER TABLE `nota`
-  MODIFY `nota_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `nota_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`

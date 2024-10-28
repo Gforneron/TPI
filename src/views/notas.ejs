@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <%- include('partials/head.ejs') %>
@@ -10,10 +10,10 @@
     <%- include('partials/sidebar.ejs') %>
 
     <main class="content-container">
-        <table>
+        <table class="notas-table">
             <tbody>
                 <tr>
-                    <td colspan="26">COLEGIO PROVINCIAL DR. ERNESTO GUEVARA</td>
+                    <td colspan="26" class="titulo">COLEGIO PROVINCIAL DR. ERNESTO GUEVARA</td>
                 </tr>
                 <tr>
                     <td colspan="3">Apellido y nombre:</td>
@@ -24,21 +24,23 @@
                     <td colspan="2">2024</td>
                 </tr>
                 <tr>
-                    <td colspan="2">Ciclo Superior de la ESO</td>
+                    <td colspan="2" class="subtitulo">Ciclo Superior de la ESO</td>
                     <% 
                     const numMaterias = usuario.curso && usuario.curso.materias ? usuario.curso.materias.length : 0;
                     const espaciosRestantes = 12 - numMaterias;
                     if (usuario.curso && usuario.curso.materias) { 
                     %>
                         <% usuario.curso.materias.forEach(materia => { %>
-                            <td><%= materia.nombre_materia %></td> <!-- Muestra el nombre de la materia -->
+                            <td class="materia"><%= materia.nombre_materia %></td>
                         <% }); %>
                         <% for (let i = 0; i < espaciosRestantes; i++) { %>
-                            <td colspan="2">-</td> <!-- Espacios vacíos -->
+                            <td colspan="2" class="vacio">                                             
+                                <!-- En caso de no haber materia no muestra nada -->
+                            </td>
                         <% } %>
                     <% } else { %>
-                        <% for (let i = 0; i < 12; i++) { %>
-                            <td colspan="2">-</td> <!-- Cuando no hay materias asignadas -->
+                        <% for (let i = 0; i < 12; i++) { %>    
+                            <td colspan="2" class="vacio"></td>
                         <% } %>
                     <% } %>
                 </tr>
@@ -46,53 +48,56 @@
                 <% const informes = ['1° informe', '2° informe']; %>
                 <% ['Primer cuatrimestre', 'Segundo cuatrimestre'].forEach((cuatrimestre, cuatrimestreIndex) => { %>
                     <tr>
-                        <td rowspan="3"><%= cuatrimestre %></td>
+                        <td rowspan="3" class="cuatrimestre"><%= cuatrimestre %></td>
                         <% informes.forEach((informe) => { %>
-                            <td><%= informe %></td>
+                            <td class="informe"><%= informe %></td>
                             <% if (usuario.curso && usuario.curso.materias) { %>
                                 <% usuario.curso.materias.forEach(materia => { %>
-                                    <td>
+                                    <td class="nota">
                                         <% 
                                         const nota = materia.notas.find(n => n.cuatrimestre === (cuatrimestreIndex + 1) && n.informe === (informes.indexOf(informe) + 1));
                                         if (nota) { 
                                         %>
-                                            <%= nota.dataValues.nota %> <!-- Muestra la nota si existe -->
+                                            <%= nota.dataValues.nota %>
                                         <% } else { %>
-                                            - <!-- Si no hay nota -->
+                                                <!-- En caso de no haber nota no muestra nada -->
                                         <% } %>
                                     </td>
                                 <% }); %>
                                 <% for (let i = 0; i < espaciosRestantes; i++) { %>
-                                    <td colspan="2">-</td> <!-- Espacios vacíos para completar las 12 materias -->
+                                    <td colspan="2" class="vacio">                                                <!-- En caso de no haber nota no muestra nada -->
+                                    </td>
                                 <% } %>
                             <% } else { %>
-                                <% for (let i = 0; i < 12   ; i++) { %>
-                                    <td colspan="2">-</td> <!-- Cuando no hay materias asignadas -->
+                                <% for (let i = 0; i < 12; i++) { %>
+                                    <td colspan="2" class="vacio"></td>
                                 <% } %>
                             <% } %>
                         </tr>
                     <% }); %>
                     <tr>
-                        <td>NOTA FINAL</td> 
+                        <td class="informe">NOTA FINAL</td> 
                         <% if (usuario.curso && usuario.curso.materias) { %>
                             <% usuario.curso.materias.forEach(materia => { %>
-                                <td>
+                                <td class="nota-final">
                                     <% 
                                     const notaFinal = materia.notas.find(n => n.informe === 3 && n.cuatrimestre === (cuatrimestreIndex + 1));
                                     if (notaFinal) { 
                                     %>
-                                        <%= notaFinal.dataValues.nota %> <!-- Muestra la nota final si existe -->
+                                        <%= notaFinal.dataValues.nota %>
                                     <% } else { %>
-                                        - <!-- Si no hay nota final -->
+                                        <!-- En caso de no haber nota final no muestra nada -->
                                     <% } %>
                                 </td>
                             <% }); %>
                             <% for (let i = 0; i < espaciosRestantes; i++) { %>
-                                <td colspan="2">-</td> <!-- Espacios vacíos para completar las 12 materias -->
+                                <td colspan="2" class="vacio">                                           
+                                    <!-- En caso de no haber nota final no muestra nada -->
+                                </td>
                             <% } %>
                         <% } else { %>
                             <% for (let i = 0; i < 12; i++) { %>
-                                <td colspan="2">-</td> <!-- Cuando no hay materias asignadas -->
+                                <td colspan="2" class="vacio"></td>
                             <% } %>
                         <% } %>
                     </tr>
