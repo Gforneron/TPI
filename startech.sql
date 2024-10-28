@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2024 a las 16:20:22
+-- Tiempo de generación: 28-10-2024 a las 16:55:38
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -185,6 +185,7 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`persona_id`, `nombre`, `correo`, `contrasena`, `tipo_usuario_id`, `curso_id`, `foto_perfil`) VALUES
+(11111111, 'alumno', 'alumno@gmail.com', '$2a$08$oFIEnTzbrilOaTe/GeygU.EDDYzfiXlzROJ3yujdCMidtj.c1AekC', 1, 25, 'user_predeterminado.jpg'),
 (22222222, 'alumnado', 'alumnado@gmail.com', '$2a$08$bMxDgXABv2X9xxs3O/ro/OswoUXW3WJ0IO2MPSzY8hftUrvdHoC9.', 3, NULL, 'user_predeterminado.jpg'),
 (33333333, 'administrador', 'administrador@gmail.com', '$2a$08$ehQLcIux3p9dXws2n.epqeXia357jKNn2F2Pm0K83xYLd7m0wwHUC', 2, NULL, 'user_predeterminado.jpg'),
 (44102385, 'Pablo Abdala', 'abdala@gmail.com', '$2a$08$DbVVwS4e1LQM8ShC8lDKnuwlksePEnlMvjQ2LSAYHmqX4goCC4HdG', 1, 25, 'user_predeterminado.jpg'),
