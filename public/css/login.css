@@ -15,7 +15,7 @@ body {
 header {
     width: 100%;
     background-color: #d13030;
-    padding: 10px 0;
+    padding: 10px 20px;
     position: fixed;
     top: 0;
     left: 0;
@@ -25,17 +25,26 @@ header {
     z-index: 1000;
 }
 
-/* Estilos del logo */
+nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Logo */
 .logo {
-    height: 2.5rem;
+    height: 3rem;
     width: auto;
     margin-right: 20px;
     border-radius: 20px;
-}
-
-ul {
-    list-style-type: none;
-    padding: auto;
 }
 
 /* Estilo del contenedor de login */
