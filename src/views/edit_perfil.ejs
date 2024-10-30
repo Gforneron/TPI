@@ -15,42 +15,90 @@
 
     <main class="content-container">
       <h1>Editar Perfil</h1>
-      <form action="update-profile.php" method="post" class="profile-form">
+      <form
+        action="/edit_perfil/<%=usuario.persona_id%>"
+        method="POST"
+        class="profile-form"
+        enctype="multipart/form-data"
+      >
+        <input type="hidden" name="_method" value="PUT" />
+        <!-- Imagen de perfil -->
         <div class="form-group">
-          <label for="name">Nombre Completo:</label>
+          <label for="profile-picture">Foto de Perfil Actual:</label>
+          <img
+            src="/images/usuarios/<%=usuario.foto_perfil%>"
+            alt="Foto de Perfil"
+            id="profile-image"
+
+          />
+        </div>
+
+        <!-- Cambiar Foto de Perfil -->
+        <div class="form-group">
+          <label for="profile-picture">Cambiar Foto de Perfil:</label>
+          <input
+            type="file"
+            id="profile-picture"
+            name="foto_perfil"
+            accept="image/*"
+          />
+        </div>
+
+        <!-- DNI -->
+        <div class="form-group">
+          <label for="dni">DNI:</label>
+          <input
+            type="text"
+            id="dni"
+            name="dni"
+            value="<%= usuario.persona_id %>"
+            disabled
+          />
+        </div>
+
+        <!-- Nombre completo -->
+        <div class="form-group">
+          <label for="name">Nombre completo:</label>
           <input
             type="text"
             id="name"
-            name="name"
-            value="Nombre Apellido"
+            name="nombre"
+            value="<%= usuario.nombre %>"
             required
           />
         </div>
+
+        <!-- Email -->
         <div class="form-group">
           <label for="email">Email:</label>
           <input
             type="email"
             id="email"
-            name="email"
-            value="usuario@example.com"
+            name="correo"
+            value="<%= usuario.correo %>"
             required
           />
         </div>
-        <div class="form-group">
-          <label for="phone">Teléfono:</label>
-          <input type="tel" id="phone" name="phone" value="+123 456 7890" />
-        </div>
-        <div class="form-group">
-          <label for="address">Dirección:</label>
+
+        <!-- Curso -->
+        <div class="form-group disabled-field">
+          <label for="curso">Curso:</label>
           <input
             type="text"
-            id="address"
-            name="address"
-            value="Calle Ejemplo, Ciudad, País"
+            id="curso"
+            name="curso"
+            value="<%= usuario.curso_id %>"
+            disabled
           />
         </div>
-        <button type="submit" class="btn-submit">Actualizar Perfil</button>
+
+        <!-- Botones -->
+        <div class="form-actions">
+          <button type="submit" class="btn-submit">Actualizar Perfil</button>
+          <a href="/perfil" class="btn-cancel">Cancelar</a>
+        </div>
       </form>
     </main>
+    <%- include('partials/footer.ejs') %>
   </body>
 </html>

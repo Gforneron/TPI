@@ -1,111 +1,195 @@
 /* Estilo general */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
-/* Estilos del header */
 header {
-    width: 100%;
-    background-color: #d13030;
-    padding: 10px 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
+  width: 100%;
+  background-color: #d13030;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
 }
 
-/* Estilos del logo */
+/* Navegación - lista de enlaces a la izquierda (nav-left) */
+.nav-left {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  font-size: 18px;
+}
+
+/* Logo */
 .logo {
-    height: 2.5rem;
-    width: auto;
-    margin-right: 20px;
-    border-radius: 20px;
+  height: 2.5rem;
+  width: auto;
+  margin-right: 20px;
+  border-radius: 20px;
 }
 
-ul {
-    list-style-type: none; 
-    padding: auto;
-  }
+.logo:hover {
+  border: #333;
+  height: 2.8rem;
+  width: auto;
+  margin-right: 20px;
+  border-radius: 20px;
+}
+/* Estilo de la imagen de perfil */
+.profile-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 3px solid #ccc;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Estilos del contenedor de perfil */
+.nav-right li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+/* Estilos para el nombre de usuario */
+.user-name {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  white-space: nowrap; /* Evita que el nombre se desborde en múltiples líneas */
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
 
 /* Estilo del contenedor de login */
 .login-container,
 .register-container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 350px;
-    margin-top: 8rem;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  margin-top: 8rem;
 }
 
 .login-container h2,
 .register-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
 }
 
 label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
 }
 
+input[type="number"], /* Agregamos estilos para input number */
 input[type="text"],
 input[type="email"],
-input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+input[type="password"],
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white; /* Fondo blanco para todos los campos */
+}
+
+input:focus,
+select:focus {
+  border-color: #d13030;
+}
+
+input.input-error,
+select.input-error {
+  border-color: #ff6b6b;
+  background-color: #ffe6e6;
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 button {
-    width: 100%;
-    padding: 12px;
-    background-color: #d13030;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
+  width: 100%;
+  padding: 12px;
+  background-color: #d13030;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #af4c4c;
+  background-color: #af4c4c;
 }
 
 .signup-text,
 .login-text {
-    text-align: center;
-    margin-top: 15px;
+  text-align: center;
+  margin-top: 15px;
 }
 
 .signup-text a,
 .login-text a {
-    color: #af4c4c;
-    text-decoration: none;
-    font-weight: bold;
+  color: #af4c4c;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .signup-text a:hover,
 .login-text a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-
+.profile-image {
+  width: 50px;
+}

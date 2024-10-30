@@ -1,7 +1,7 @@
 {
   "name": "startech",
   "version": "1.0.0",
-  "description": "",
+  "description": "Este proyecto fue desarrollado por **Startech**, una empresa de desarrollo web enfocada en soluciones tecnológicas innovadoras. Como parte de nuestro **Trabajo Práctico Integrador (TPI)**, hemos creado un **sistema de cargado de notas** destinado a facilitar la gestión de las calificaciones académicas en instituciones educativas.",
   "main": "app.js",
   "scripts": {
     "test": "nodemon src/app.js",
@@ -12,16 +12,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "ejs": "^3.1.10",
-    "express": "^4.21.0",
-    "express-session": "^1.18.0",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
     "express-validation": "^4.1.1",
     "express-validator": "^7.2.0",
     "method-override": "^3.0.0",
+    "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
+    "mysql2": "^3.11.3",
     "node": "^22.9.0",
     "node.js": "^0.0.1-security",
     "nodemon": "^3.1.7",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.4"
   }
 }

@@ -1,4 +1,5 @@
-# Startech - Sistema de Cargado de Notas
+
+# Startech - Sistema de Cargado de Notas 
 
 ## Descripción del Proyecto
 
@@ -32,6 +33,24 @@ en la consola una vez descargado el proyecto
 Para ejecutar el proyecto, primero asegúrate de que todas las dependencias estén instaladas correctamente. Luego, utiliza el siguiente comando para ejecutar las pruebas del proyecto:
 
 - **npm test**
+
+## Usuarios de Prueba
+
+Para probar el sistema, se han creado tres usuarios locales con diferentes roles de acceso:
+
+- **Alumno**: 
+  - Correo: alumno@gmail.com
+  - Contraseña: 11111111
+
+- **Administrador**: 
+  - Correo: administrador@gmail.com
+  - Contraseña: 22222222
+  
+- **Encargado de Carga de Notas**:
+  - Correo: alumnado@gmail.com
+  - Contraseña: 33333333
+
+Cada uno de estos usuarios tiene permisos específicos que permiten evaluar las diferentes funcionalidades del sistema.
 
 ## Funcionalidades Principales
 

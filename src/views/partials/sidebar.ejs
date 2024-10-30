@@ -1,10 +1,45 @@
 <aside class="sidebar">
     <ul>
-        <li><a href="/">Inicio</a></li>
-        <li><a href="notas">Visualizar Notas</a></li>
-        <li><a href="gestion_curso">Gestión de Cursos</a></li>
-        <li><a href="gestion_materias">Gestión de Materias</a></li>
-        <li><a href="vista_materias">Vista de Materias</a></li>
-        <li><a href="gestion_usuarios">Gestión de Usuarios</a></li>
+        <% if (usuario.tipo_usuario_id === 1) { %>
+            <li><a href="/home">Inicio</a></li>
+            <li><a href="/notas">Visualizar Notas</a></li>
+        <% } else if (usuario.tipo_usuario_id === 2 || usuario.tipo_usuario_id === 3 ) { %>
+            <li><a href="/home">Inicio</a></li>
+            <li><a href="/notas">Visualizar Notas</a></li>
+            <li><a href="/gestion_curso">Gestión de Cursos</a></li>
+            <li><a href="/gestion_usuarios">Gestión de Usuarios</a></li>
+        <% }%>
+
     </ul>
 </aside>
+<style>/* Estilos de la sidebar */
+    .sidebar {
+        width: 200px;
+        background-color: #333;
+        color: white;
+        position: fixed;
+        top: 60px; 
+        left: 0;
+        height: calc(100% - 60px);
+        padding-top: 20px;
+    }
+    
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    .sidebar ul li {
+        padding: 10px;
+    }
+    
+    .sidebar ul li a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+    }
+    
+    .sidebar ul li a:hover {
+        background-color: #af4c4c;
+    }</style>

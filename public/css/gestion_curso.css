@@ -9,8 +9,8 @@
     border-radius: 8px;
     flex-grow: 1;
     overflow-y: auto;
+    min-height: calc(120vh - 5.5rem - 60px);
 }
-
 .courses-grid {
     display: flex;
     flex-wrap: wrap;

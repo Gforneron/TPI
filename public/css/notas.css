@@ -1,50 +1,104 @@
 @import url(./estilo_generales.css);
 
-
 /* Estilo del contenedor de contenido principal */
 .content-container {
-    margin-left: 17%; 
-    margin-top: 7%; 
-    padding: 20px;
-    width: calc(100% - 250px);
+  margin-left: 17%;
+  margin-top: 7%;
+  padding: 15px;
+  width: calc(100% - 250px);
 }
 
-/* Estilo de la tabla */
+/* Estilos generales de la tabla */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px auto;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-    font-size: 14px;
+/* Efecto de sombra ampliada al pasar el mouse */
+table:hover {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
 }
 
-td[colspan="2"], td[colspan="3"], td[colspan="4"] {
-    background-color: #f9f9f9;
+/* Estilos para todas las celdas */
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 13px;
+  vertical-align: middle;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-td[rowspan="3"] {
-    background-color: #f9f9f9;
+/* Títulos y subtítulos */
+.titulo {
+  font-weight: bold;
+  font-size: 14px;
+  background-color: #f3f3f3;
+  color: #333;
 }
 
-/* Estilo de los encabezados de fila */
+.subtitulo,
+.cuatrimestre,
+.informe {
+  font-weight: bold;
+  background-color: #f3f3f3;
+  color: #555;
+  text-align: center;
+  font-size: 12px;
+}
+
+.materia,
+.nota,
+.nota-final,
+.vacio {
+  background-color: #f9f9f9;
+  color: #555;
+  font-weight: bold;
+  text-align: center;
+}
+
+.vacio {
+  color: #999;
+  font-style: italic;
+}
+
+/* Celdas con colspan o rowspan */
+td[colspan="2"],
+td[colspan="3"],
+td[colspan="4"],
+td:empty {
+  background-color: #f9f9f9;
+  color: #555;
+  text-align: center;
+}
+
+/* Alternancia de color en las filas */
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
+/* Efecto de hover en las filas con color más oscuro */
 tr:hover {
-    background-color: #eaeaea;
+  background-color: #c9dce8; /* Fondo más oscuro al pasar el mouse */
+  color: #333; /* Asegura que el texto sea legible */
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilo de los campos de observaciones */
-td[colspan="15"] {
-    text-align: left;
-    padding: 10px;
+/* Efecto de selección al hacer clic */
+tr.selected {
+  background-color: #a9c1d6;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Transición suave */
+td, th {
+  transition: all 0.2s ease;
 }

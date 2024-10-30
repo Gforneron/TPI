@@ -1,19 +1,121 @@
 <header>
-    <nav>
-        <ul class="nav-left">
-            <li>
-              <a href="index.html">
-                <img
-                  src="/images/LogoGuevara.png"
-                  alt="LogoGuevara"
-                  class="logo"
-                />
-                Colegio Dr. Ernesto Guevara
+  <nav>
+      <ul class="nav-left">
+          <li>
+              <a href="/home">
+                  <img
+                      src="/images/LogoGuevara.png"
+                      alt="LogoGuevara"
+                      class="logo"
+                  />
+                  Colegio Dr. Ernesto Guevara
               </a>
-            </li>
-          </ul>
-    </nav>
-    <ul class="nav-right">
-        <li><a href="perfil" class="fa-solid fa-user profile-icon"></a></li>
-    </ul>
+          </li>
+      </ul>
+  </nav>
+  <ul class="nav-right">
+      <li>
+          <a href="/perfil">
+              <img
+                  src="/images/usuarios/<%= usuario.foto_perfil %>"
+                  alt="Foto de Perfil"
+                  class="profile-image"
+              />
+              <span class="user-name"><%= usuario.nombre %></span>
+          </a>
+      </li>
+  </ul>
 </header>
+<style>
+/* Estilos del header */
+header {
+    width: 100%;
+    background-color: #d13030;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Navegación - lista de enlaces a la izquierda (nav-left) */
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    font-size: 18px;
+}
+
+/* Logo */
+.logo {
+    height: 2.5rem;
+    width: auto;
+    margin-right: 20px;
+    border-radius: 20px;
+}
+
+.logo:hover {
+    border: #333;
+    height: 2.8rem;
+    width: auto;
+    margin-right: 20px;
+    border-radius: 20px;
+}
+/* Estilo de la imagen de perfil */
+.profile-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 3px solid #ccc;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Estilos del contenedor de perfil */
+.nav-right li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+/* Estilos para el nombre de usuario */
+.user-name {
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    white-space: nowrap; /* Evita que el nombre se desborde en múltiples líneas */
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+</style>

@@ -1,1 +1,128 @@
 @import url(./estilo_generales.css);
+
+/* Estilos del contenido principal */
+.main-content {
+    margin: auto;
+    margin-top: 5.5rem;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    max-width: 1200px;
+    overflow-y: auto;
+    min-height: calc(120vh - 5.5rem - 60px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos del encabezado */
+.main-content h1, .main-content h2 {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.main-content h1 {
+    font-size: 28px;
+}
+
+.main-content h2 {
+    font-size: 22px;
+    color: #b9170b;
+}
+
+/* Estilos de la tabla de alumnos */
+.students-container {
+    margin-top: 20px;
+}
+
+.students-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.students-table thead {
+    background-color: #d13030;
+    color: white;
+}
+
+.students-table th, .students-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.students-table th {
+    font-size: 16px;
+}
+
+.students-table td {
+    font-size: 14px;
+}
+
+#table1:hover {
+    background-color: #d13030;
+}
+
+.students-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilos de los select y campos de entrada */
+select, input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+select:focus, input[type="number"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Botón de envío */
+.submit-btn {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto;
+    padding: 12px;
+    background-color: #3e9441;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #52be56;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+    .students-table thead {
+        display: none;
+    }
+
+    .students-table tr {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .students-table td {
+        display: block;
+        text-align: right;
+        padding: 8px;
+    }
+
+    .students-table td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+}
