@@ -6,9 +6,6 @@
 Este proyecto fue desarrollado por **Startech**, una empresa de desarrollo web enfocada en soluciones tecnológicas innovadoras. Como parte de nuestro **Trabajo Práctico Integrador (TPI)**, hemos creado un **sistema de cargado de notas** destinado a facilitar la gestión de las calificaciones académicas en instituciones educativas.
 
 El sistema permite a los docentes cargar y gestionar las notas de sus estudiantes de manera sencilla y eficiente, brindando una plataforma intuitiva y segura para el manejo de esta información crítica.
-# Nombre del Proyecto
-
-Aquí va una breve descripción del proyecto y su propósito. Por ejemplo: "Este proyecto es una aplicación web para gestionar usuarios y sus cursos."
 
 ## Requisitos
 
