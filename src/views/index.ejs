@@ -26,7 +26,13 @@
         <iframe
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/ID_DEL_VIDEO"
+            <% if (usuario.tipo_usuario_id === 1) { %>
+              src="https://www.youtube.com/watch?v=0KbQ1FclCz8"
+            <% } else if (usuario.tipo_usuario_id === 3 ) { %>
+              src="https://www.youtube.com/watch?v=0KbQ1FclCz8"
+            <% } else if (usuario.tipo_usuario_id === 2 ) { %>
+              src="https://www.youtube.com/watch?v=0KbQ1FclCz8"
+              <% } %>       
           title="Video explicativo"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
