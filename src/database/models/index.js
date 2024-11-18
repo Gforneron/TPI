@@ -8,7 +8,6 @@ const sequelize = new Sequelize(
   {
     host: config.host,
     dialect: 'mysql',
-    logging: console.log // Habilita el registro
   }
 );
 

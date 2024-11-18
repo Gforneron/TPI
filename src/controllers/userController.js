@@ -64,7 +64,7 @@ userController.loginUser = async (req, res) => {
 
     // Busca al usuario en la base de datos
     const usuario = await db.Persona.findOne({ where: { correo } });
-
+    
     if (!usuario) {
       return res.render("login", {
         error: "Usuario no encontrado.",

@@ -39,6 +39,7 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
+    box-sizing: border-box;
 }
 
 /* Navegación - lista de enlaces a la izquierda (nav-left) */
@@ -81,6 +82,7 @@ nav ul li a:hover {
     width: auto;
     margin-right: 20px;
     border-radius: 20px;
+    transition: all 0.3s ease;
 }
 
 .logo:hover {
@@ -90,6 +92,7 @@ nav ul li a:hover {
     margin-right: 20px;
     border-radius: 20px;
 }
+
 /* Estilo de la imagen de perfil */
 .profile-image {
     width: 50px;
@@ -98,10 +101,8 @@ nav ul li a:hover {
     border-radius: 50%;
     margin-bottom: 10px;
     border: 3px solid #ccc;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
+
 /* Estilos del contenedor de perfil */
 .nav-right li a {
     display: flex;
@@ -109,13 +110,68 @@ nav ul li a:hover {
     text-decoration: none;
     color: white;
 }
+
 /* Estilos para el nombre de usuario */
 .user-name {
     font-size: 16px;
     color: white;
     font-weight: bold;
-    white-space: nowrap; /* Evita que el nombre se desborde en múltiples líneas */
+    white-space: nowrap;
     margin-left: 10px;
     margin-bottom: 10px;
 }
+
+/* Responsividad */
+@media (max-width: 768px) {
+    header {
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-left, .nav-right {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        height: 2rem;
+        margin-right: 0;
+    }
+
+    .profile-image {
+        width: 40px;
+        height: 40px;
+    }
+
+    .user-name {
+        font-size: 14px;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 8px;
+    }
+
+    .nav-left, .nav-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .logo {
+        height: 1.8rem;
+    }
+
+    .profile-image {
+        width: 35px;
+        height: 35px;
+    }
+
+    .user-name {
+        font-size: 12px;
+    }
+}
+
 </style>

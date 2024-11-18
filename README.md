@@ -7,30 +7,6 @@ Este proyecto fue desarrollado por **Startech**, una empresa de desarrollo web e
 
 El sistema permite a los docentes cargar y gestionar las notas de sus estudiantes de manera sencilla y eficiente, brindando una plataforma intuitiva y segura para el manejo de esta información crítica.
 
-## Requisitos
-
-Asegúrate de tener instalados los siguientes programas:
-
-- [Node.js](https://nodejs.org/) (versión recomendada: v14 o superior).
-- [npm](https://www.npmjs.com/) (incluido con Node.js).
-
-## Clonar el Repositorio
-
-Primero, clona el repositorio en tu máquina local. Abre una terminal y ejecuta el siguiente comando:
-
-git clone https://github.com/Gforneron/TPI.git
-
-## Instalar dependencias
-
-en la consola una vez descargado el proyecto
--  **cd /TPI**
-- **npm install**
-
-## Ejecutar el pryecto
-Para ejecutar el proyecto, primero asegúrate de que todas las dependencias estén instaladas correctamente. Luego, utiliza el siguiente comando para ejecutar las pruebas del proyecto:
-
-- **npm test**
-
 ## Usuarios de Prueba
 
 Para probar el sistema, se han creado tres usuarios locales con diferentes roles de acceso:

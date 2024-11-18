@@ -10,9 +10,7 @@
 
     <main class="main-content">
       <h1><%= curso.nombre_curso %> - <%= materia.nombre_materia %></h1>
-      <!-- Nombre del curso -->
       <h2>Listado alumnos</h2>
-      <!-- Nombre de la materia -->
 
       <div class="students-container">
         <form
@@ -31,14 +29,12 @@
             </thead>
             <tbody>
               <% alumnos.forEach((alumno, index) => { %>
-              <!-- Itera sobre los alumnos -->
               <tr>
                 <td><%= alumno.dataValues.nombre %></td>
                 <td>
                   <select
                     id="cuatrimestre-<%= alumno.persona_id %>"
                     name="cuatrimestre-<%= alumno.persona_id %>"
-                    required
                   >
                     <option value="" disabled selected>Seleccionar</option>
                     <option value="1">1er Cuatrimestre</option>
@@ -49,7 +45,6 @@
                   <select
                     id="informe-<%= alumno.persona_id %>"
                     name="informe-<%= alumno.persona_id %>"
-                    required
                   >
                     <option value="" disabled selected>Seleccionar</option>
                     <option value="1">Informe 1</option>
@@ -65,7 +60,6 @@
                     min="0"
                     max="10"
                     placeholder="Nota"
-                    required
                   />
                 </td>
               </tr>

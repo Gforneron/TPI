@@ -24,8 +24,16 @@
           <h2><%= usuario.nombre %></h2>
           <p><strong>DNI:</strong> <%=usuario.persona_id%></p>
           <p><strong>Email:</strong> <%=usuario.correo%></p>
+          <% if (usuario.curso) { %>
           <p>
             <strong>Curso:</strong> <%= usuario.curso.dataValues.nombre_curso %>
+          </p>
+          <% } %>
+          <p>
+            <strong>Rol:</strong>
+            <% if (usuario.tipo_usuario_id === 1) { %> Alumno <% } else if (usuario.tipo_usuario_id ===
+            3) { %> Alumnado <% } else if (usuario.tipo_usuario_id === 2) { %> Administrador
+            <% } %>
           </p>
           <a href="edit_perfil" class="btn-edit">Editar Perfil</a>
           <a href="/cerrar" class="btn-edit" id="cerrar">Cerrar Sesión</a>

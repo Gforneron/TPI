@@ -1,6 +1,5 @@
 @import url(./estilo_generales.css);
 
-/* Estilo del contenedor de contenido principal */
 .content-container {
   margin-left: 17%;
   margin-top: 7%;
@@ -8,7 +7,6 @@
   width: calc(100% - 250px);
 }
 
-/* Estilos generales de la tabla */
 table {
   width: 80%;
   border-collapse: collapse;
@@ -19,12 +17,10 @@ table {
   transition: box-shadow 0.3s ease;
 }
 
-/* Efecto de sombra ampliada al pasar el mouse */
 table:hover {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos para todas las celdas */
 td,
 th {
   border: 1px solid #ddd;
@@ -35,7 +31,6 @@ th {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Títulos y subtítulos */
 .titulo {
   font-weight: bold;
   font-size: 14px;
@@ -68,7 +63,6 @@ th {
   font-style: italic;
 }
 
-/* Celdas con colspan o rowspan */
 td[colspan="2"],
 td[colspan="3"],
 td[colspan="4"],
@@ -78,27 +72,90 @@ td:empty {
   text-align: center;
 }
 
-/* Alternancia de color en las filas */
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-/* Efecto de hover en las filas con color más oscuro */
 tr:hover {
-  background-color: #c9dce8; /* Fondo más oscuro al pasar el mouse */
-  color: #333; /* Asegura que el texto sea legible */
+  background-color: #c9dce8; 
+  color: #333; 
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Efecto de selección al hacer clic */
 tr.selected {
   background-color: #a9c1d6;
   color: #333;
   font-weight: bold;
 }
 
-/* Transición suave */
 td, th {
   transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    margin-left: 5%; 
+    width: 90%; 
+  }
+
+  table {
+    width: 100%; 
+  }
+
+  td, th {
+    font-size: 12px; 
+    padding: 6px; 
+  }
+
+  .titulo, .subtitulo, .cuatrimestre, .informe {
+    font-size: 12px; 
+  }
+
+  .materia, .nota, .nota-final, .vacio {
+    font-size: 12px; 
+  }
+
+  tr:nth-child(even) {
+    background-color: #f7f7f7; 
+  }
+
+  tr:hover {
+    background-color: #dbe3ea; 
+  }
+
+  .content-container {
+    margin-top: 5%; 
+  }
+}
+
+@media (max-width: 480px) {
+  .content-container {
+    margin-left: 0; 
+    width: 100%; 
+  }
+  table {
+    width: 100%; 
+  }
+
+  td, th {
+    font-size: 11px; 
+    padding: 5px; 
+  }
+
+  .titulo, .subtitulo, .cuatrimestre, .informe {
+    font-size: 10px; 
+  }
+
+  .materia, .nota, .nota-final, .vacio {
+    font-size: 10px; 
+  }
+
+  tr:nth-child(even) {
+    background-color: #f7f7f7; 
+  }
+
+  tr:hover {
+    background-color: #c9dce8; 
+  }
 }

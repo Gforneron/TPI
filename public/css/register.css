@@ -71,6 +71,7 @@ nav ul li a:hover {
   margin-right: 20px;
   border-radius: 20px;
 }
+
 /* Estilo de la imagen de perfil */
 .profile-image {
   width: 50px;
@@ -83,6 +84,7 @@ nav ul li a:hover {
   margin-left: auto;
   margin-right: auto;
 }
+
 /* Estilos del contenedor de perfil */
 .nav-right li a {
   display: flex;
@@ -90,6 +92,7 @@ nav ul li a:hover {
   text-decoration: none;
   color: white;
 }
+
 /* Estilos para el nombre de usuario */
 .user-name {
   font-size: 16px;
@@ -188,8 +191,85 @@ button:hover {
 .signup-text a:hover,
 .login-text a:hover {
   text-decoration: underline;
+
+@media (max-width: 768px) {
+  .login-container,
+  .register-container {
+    width: 90%; 
+    margin-top: 5rem; 
+  }
+
+  header {
+    flex-direction: column; 
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .nav-left,
+  .nav-right {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    height: 2.2rem; 
+  }
+
+  .user-name {
+    font-size: 14px; 
+  }
+
+  .profile-image {
+    width: 40px; 
+    height: 40px;
+  }
+
+  nav ul {
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+
+  nav ul li {
+    margin-bottom: 10px; 
+  }
+
+  button {
+    padding: 10px; 
+    font-size: 14px; 
+  }
 }
 
-.profile-image {
-  width: 50px;
-}
+@media (max-width: 480px) {
+  .login-container,
+  .register-container {
+    width: 100%; 
+    margin-top: 4rem; 
+  }
+
+  header {
+    padding: 8px;
+  }
+
+  .logo {
+    height: 1.8rem; 
+  }
+
+  .user-name {
+    font-size: 12px; 
+  }
+
+  .profile-image {
+    width: 35px; 
+    height: 35px;
+  }
+
+  nav ul li a {
+    font-size: 14px; 
+  }
+
+  button {
+    padding: 8px; 
+    font-size: 12px; 
+  }
+}}

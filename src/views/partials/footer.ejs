@@ -38,63 +38,111 @@
 </footer>
 
 <style>
-  main {
+ main {
     flex: 1;
-  }
+}
 
-  .fa-brands,
-  .fa-solid {
+.fa-brands,
+.fa-solid {
     margin: 5px;
-  }
+}
 
-  /* Pie de página */
-  .pie-de-pagina {
+/* Pie de página */
+.pie-de-pagina {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 5px 0;
-    position: relative;
-    bottom: 0;
+    padding: 10px 0;
     width: 100%;
     margin-top: 20px;
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-  .pie-de-pagina .contenedor {
+.pie-de-pagina .contenedor {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 5px;
-  }
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
 
-  .pie-de-pagina p {
+.pie-de-pagina p {
     margin: 5px 0;
-  }
+    font-size: 0.875rem;
+}
 
-  .pie-de-pagina .sociales-contenedor {
+.pie-de-pagina .sociales-contenedor {
     margin-top: 10px;
-  }
+}
 
-  .pie-de-pagina .titulo-redes {
+.pie-de-pagina .titulo-redes {
     margin-bottom: 10px;
     font-weight: bold;
     color: antiquewhite;
-  }
+    font-size: 1rem;
+}
 
-  .pie-de-pagina .redes-sociales {
+.pie-de-pagina .redes-sociales {
     list-style-type: none;
     padding: 0;
-  }
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
 
-  .pie-de-pagina .redes-sociales li {
-    display: inline;
-    margin: 0 10px;
-  }
+.pie-de-pagina .redes-sociales li {
+    display: inline-flex;
+    align-items: center;
+}
 
-  .pie-de-pagina .redes-sociales li a {
+.pie-de-pagina .redes-sociales li a {
     color: white;
     text-decoration: none;
-  }
+    margin-left: 5px;
+}
 
-  .pie-de-pagina .redes-sociales li a:hover {
+.pie-de-pagina .redes-sociales li a:hover {
     text-decoration: underline;
-  }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .pie-de-pagina .contenedor {
+        padding: 0 10px;
+    }
+
+    .pie-de-pagina .titulo-redes {
+        font-size: 0.9rem;
+    }
+
+    .pie-de-pagina .redes-sociales {
+        gap: 10px;
+    }
+    
+    .pie-de-pagina p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pie-de-pagina {
+        padding: 15px;
+    }
+
+    .pie-de-pagina .titulo-redes {
+        font-size: 0.85rem;
+    }
+
+    .pie-de-pagina .redes-sociales {
+        gap: 8px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pie-de-pagina p {
+        font-size: 0.75rem;
+    }
+}
 </style>

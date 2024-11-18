@@ -1,110 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+  <head>
     <%- include('partials/head.ejs') %>
     <title>Notas</title>
     <link rel="stylesheet" href="/css/notas.css" />
-</head>
-<body>
-    <%- include('partials/header.ejs') %>
-    <%- include('partials/sidebar.ejs') %>
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %> <%- include('partials/sidebar.ejs') %>
 
     <main class="content-container">
-        <table class="notas-table">
-            <tbody>
-                <tr>
-                    <td colspan="26" class="titulo">COLEGIO PROVINCIAL DR. ERNESTO GUEVARA</td>
-                </tr>
-                <tr>
-                    <td colspan="3">Apellido y nombre:</td>
-                    <td colspan="3"><%= usuario.nombre %></td>
-                    <td colspan="3">Curso:</td>
-                    <td colspan="3"><%= usuario.curso.nombre_curso %></td>
-                    <td colspan="2">Año:</td>
-                    <td colspan="2">2024</td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="subtitulo">Ciclo Superior de la ESO</td>
-                    <% 
-                    const numMaterias = usuario.curso && usuario.curso.materias ? usuario.curso.materias.length : 0;
-                    const espaciosRestantes = 12 - numMaterias;
-                    if (usuario.curso && usuario.curso.materias) { 
-                    %>
-                        <% usuario.curso.materias.forEach(materia => { %>
-                            <td class="materia"><%= materia.nombre_materia %></td>
-                        <% }); %>
-                        <% for (let i = 0; i < espaciosRestantes; i++) { %>
-                            <td colspan="2" class="vacio">                                             
-                                <!-- En caso de no haber materia no muestra nada -->
-                            </td>
-                        <% } %>
-                    <% } else { %>
-                        <% for (let i = 0; i < 12; i++) { %>    
-                            <td colspan="2" class="vacio"></td>
-                        <% } %>
-                    <% } %>
-                </tr>
-                
-                <% const informes = ['1° informe', '2° informe']; %>
-                <% ['Primer cuatrimestre', 'Segundo cuatrimestre'].forEach((cuatrimestre, cuatrimestreIndex) => { %>
-                    <tr>
-                        <td rowspan="3" class="cuatrimestre"><%= cuatrimestre %></td>
-                        <% informes.forEach((informe) => { %>
-                            <td class="informe"><%= informe %></td>
-                            <% if (usuario.curso && usuario.curso.materias) { %>
-                                <% usuario.curso.materias.forEach(materia => { %>
-                                    <td class="nota">
-                                        <% 
-                                        const nota = materia.notas.find(n => n.cuatrimestre === (cuatrimestreIndex + 1) && n.informe === (informes.indexOf(informe) + 1));
-                                        if (nota) { 
-                                        %>
-                                            <%= nota.dataValues.nota %>
-                                        <% } else { %>
-                                                <!-- En caso de no haber nota no muestra nada -->
-                                        <% } %>
-                                    </td>
-                                <% }); %>
-                                <% for (let i = 0; i < espaciosRestantes; i++) { %>
-                                    <td colspan="2" class="vacio">                                                <!-- En caso de no haber nota no muestra nada -->
-                                    </td>
-                                <% } %>
-                            <% } else { %>
-                                <% for (let i = 0; i < 12; i++) { %>
-                                    <td colspan="2" class="vacio"></td>
-                                <% } %>
-                            <% } %>
-                        </tr>
-                    <% }); %>
-                    <tr>
-                        <td class="informe">NOTA FINAL</td> 
-                        <% if (usuario.curso && usuario.curso.materias) { %>
-                            <% usuario.curso.materias.forEach(materia => { %>
-                                <td class="nota-final">
-                                    <% 
-                                    const notaFinal = materia.notas.find(n => n.informe === 3 && n.cuatrimestre === (cuatrimestreIndex + 1));
-                                    if (notaFinal) { 
-                                    %>
-                                        <%= notaFinal.dataValues.nota %>
-                                    <% } else { %>
-                                        <!-- En caso de no haber nota final no muestra nada -->
-                                    <% } %>
-                                </td>
-                            <% }); %>
-                            <% for (let i = 0; i < espaciosRestantes; i++) { %>
-                                <td colspan="2" class="vacio">                                           
-                                    <!-- En caso de no haber nota final no muestra nada -->
-                                </td>
-                            <% } %>
-                        <% } else { %>
-                            <% for (let i = 0; i < 12; i++) { %>
-                                <td colspan="2" class="vacio"></td>
-                            <% } %>
-                        <% } %>
-                    </tr>
-                <% }); %>
-            </tbody>
-        </table>
+      <table>
+        <tbody>
+          <tr>
+            <td colspan="12">COLEGIO PROVINCIAL DR. ERNESTO GUEVARA</td>
+          </tr>
+          <tr>
+            <td colspan="2">Apellido y nombre:</td>
+            <td colspan="2"><%= usuario.nombre %> <%= usuario.apellido %></td>
+            <td colspan="2">Curso:</td>
+            <td colspan="2"><%= usuario.curso.nombre_curso %></td>
+            <td colspan="2">Año:</td>
+            <td colspan="2">2024</td>
+          </tr>
+          <tr>
+            <td colspan="2">Ciclo Superior de la ESO</td>
+            <!-- Ciclo de materias -->
+            <% usuario.curso.materias.forEach((materia) => { %>
+            <td><%= materia.nombre_materia %></td>
+            <% }) %>
+          </tr>
+
+          <!-- Primer cuatrimestre -->
+          <tr>
+            <td rowspan="3">Primer cuatrimestre</td>
+            <td>1° informe</td>
+            <% usuario.curso.materias.forEach((materia) => { %>
+            <td><%= materia.notas[0]?.nota|| '-' %></td>
+            <% }) %>
+          </tr>
+          <tr>
+            <td>2° informe</td>
+            <% usuario.curso.materias.forEach((materia) => { %>
+            <td><%= materia.notas[1]?.nota || '-' %></td>
+            <% }) %>
+          </tr>
+          <tr>
+            <td>NOTA</td>
+            <% usuario.curso.materias.forEach((materia) => { %>
+            <td><%= materia.notas[4]?.nota || '-' %></td>
+            <% }) %>
+          </tr>
+          <!-- Segundo cuatrimestre -->
+
+          <tr>
+            <td rowspan="3">Segundo cuatrimestre</td>
+            <td>1° informe</td>
+            <% usuario.curso.materias.forEach((materia) => { %>
+            <td><%= materia.notas[2]?.nota || '-' %></td>
+            <% }) %>
+          </tr>
+          <tr>
+            <td>2° informe</td>
+            <% usuario.curso.materias.forEach((materia) => { %>
+            <td><%= materia.notas[3]?.nota || '-' %></td>
+            <% }) %>
+          </tr>
+          <tr>
+            <td>NOTA</td>
+            <% usuario.curso.materias.forEach((materia) => { %>
+            <td><%= materia.notas[5]?.nota || '-' %></td>
+            <% }) %>
+          </tr>
+        </tbody>
+      </table>
     </main>
     <%- include('partials/footer.ejs') %>
-</body>
+  </body>
 </html>

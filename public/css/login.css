@@ -23,6 +23,7 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
@@ -54,7 +55,7 @@ nav ul li a {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 350px;
-    margin-top: 80px; 
+    margin-top: 120px; /* Ajuste para que quede debajo del header */
 }
 
 .login-container h2 {
@@ -121,4 +122,51 @@ input[type="password"] {
 
 .contact-link:hover {
     text-decoration: underline;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .login-container, .no-account-container {
+        width: 80%;
+        padding: 20px;
+    }
+    
+    .login-container h2 {
+        font-size: 20px;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    #button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container, .no-account-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    header {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .logo {
+        height: 2.5rem;
+        margin-right: 10px;
+    }
+
+    .login-container h2 {
+        font-size: 18px;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    #button {
+        padding: 8px;
+        font-size: 14px;
+    }
 }

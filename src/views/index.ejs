@@ -26,7 +26,13 @@
         <iframe
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/tu_video"
+            <% if (usuario.tipo_usuario_id === 1) { %>
+              src="/videos/Alumno.mp4"
+            <% } else if (usuario.tipo_usuario_id === 3 ) { %>
+              src="/videos/Alumnado.mp4"
+            <% } else if (usuario.tipo_usuario_id === 2 ) { %>
+              src="/videos/Administrador.mp4"
+              <% } %>
           title="Video explicativo"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
