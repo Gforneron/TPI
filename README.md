@@ -8,6 +8,33 @@ El sistema permite a los docentes cargar y gestionar las notas de sus estudiante
 
 ---
 
+## Instalación y Ejecución
+
+1. **Clonar el Repositorio**:  
+   ```bash
+   git clone https://github.com/Gforneron/TPI.git
+   cd TPI/
+
+2. **Instalar dependencias**:  
+   ```bash
+   npm install
+
+3 **Configurar el entorno**:  
+
+ - Asegúrate de tener Node.js instalado en tu sistema. Puedes descargarlo desde nodejs.org.
+ - Importa el archivo SQL proporcionado en el repositorio en tu gestor de base de datos (por ejemplo, phpMyAdmin o desde la línea de comandos de MySQL).
+ - Inicia el servidor de la base de datos antes de ejecutar la aplicación.
+
+4. **Ejecutar el proyecto**:  
+   ```bash
+   node src/app.js
+
+5. **Alternativa de ejecución del proyecto**:  
+   ```bash
+   npm start
+
+---
+
 ## Usuarios de Prueba
 
 Para probar el sistema, se han creado tres usuarios locales con diferentes roles de acceso:
@@ -43,24 +70,3 @@ Cada uno de estos usuarios tiene permisos específicos que permiten evaluar las 
 - **Backend**: Node.js, Express.
 - **Base de Datos**: MySQL.
 - **Control de Versiones**: Git, GitHub.  
-
----
-
-## Instalación y Ejecución
-
-1. **Clonar el Repositorio**:  
-   ```bash
-   git clone https://github.com/Gforneron/TPI.git
-   cd TPI/
-
-2. **Instalar dependencias**:  
-   ```bash
-   npm install
-
-2. **Ejecutar el proyecto**:  
-   ```bash
-   node src/app.js
-
-3. **Alternativa de ejecución del proyecto**:  
-   ```bash
-   npm start
