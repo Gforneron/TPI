@@ -7,7 +7,7 @@ const methodOverride = require("method-override");
 // Crear la aplicación de Express
 const app = express();
 
-const port = process.env.port || 3080;
+const port = process.env.port || 3030;
 
 // Middlewares
 app.use(express.urlencoded({ extended: true })); //para analizar datos de formularios (application/x-www-form-urlencoded)
