@@ -5,7 +5,7 @@ const multer = require("multer");
 
 // Llamada de middleware
 const middleware = require("../middlewares/Session");
-const { soloAdministradores } = require('../middlewares/Roles');
+const { soloAlumnos, soloAlumnado, soloAdministradores} = require("../middlewares/Roles.js") 
 const validacion = require("../middlewares/Validaciones")
 
 // Llamada de controller

@@ -6,11 +6,12 @@
     <link rel="stylesheet" href="/css/index.css" />
   </head>
   <body>
-    <!-- Trae el header -->
+        <!-- Trae el header --> 
     <%- include('partials/header.ejs') %>
 
-    <!-- Trae la Barra lateral -->
+    <!-- Trae la Barra lateral --> 
     <%- include('partials/sidebar.ejs') %>
+
 
     <main class="content-container">
       <h1>Bienvenido a Nuestra Plataforma</h1>
@@ -25,7 +26,13 @@
         <iframe
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/ID_DEL_VIDEO"
+            <% if (usuario.tipo_usuario_id === 1) { %>
+              src="/videos/Video-alumno.mp4"
+            <% } else if (usuario.tipo_usuario_id === 3 ) { %>
+              src="/videos/Administrador.mp4"
+            <% } else if (usuario.tipo_usuario_id === 2 ) { %>
+              src="/videos/alumnado.mp4"
+              <% } %>
           title="Video explicativo"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -34,7 +41,9 @@
         </iframe>
       </div>
     </main>
-    <!-- Trae la Barra lateral -->
-    <%- include('partials/footer.ejs') %>
+        <!-- Trae la Barra lateral --> 
+        <%- include('partials/footer.ejs') %>
+    
   </body>
+
 </html>
