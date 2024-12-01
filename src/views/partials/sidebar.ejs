@@ -9,14 +9,14 @@
 <aside class="sidebar">
   <ul>
     <% if (usuario.tipo_usuario_id === 1) { %>
-    <li><a href="/home">Inicio</a></li>
-    <li><a href="/notas">Visualizar Notas</a></li>
+    <li><a href="/app/home">Inicio</a></li>
+    <li><a href="/app/notas">Visualizar Notas</a></li>
     <% } else if (usuario.tipo_usuario_id === 3) { %>
-    <li><a href="/home">Inicio</a></li>
-    <li><a href="/gestion_curso">Gestión de Curso</a></li>
+    <li><a href="/app/home">Inicio</a></li>
+    <li><a href="/app/gestion_curso">Gestión de Curso</a></li>
     <% } else if (usuario.tipo_usuario_id === 2) { %>
-    <li><a href="/home">Inicio</a></li>
-    <li><a href="/gestion_usuarios">Gestión de Usuarios</a></li>
+    <li><a href="/app/home">Inicio</a></li>
+    <li><a href="/app/gestion_usuarios">Gestión de Usuarios</a></li>
     <% } %>
   </ul>
 </aside>

@@ -3,7 +3,7 @@
 <head>
     <%- include('partials/head.ejs') %>
     <title>Gestión de Usuarios</title>
-    <link rel="stylesheet" href="/css/gestion_usuarios.css" />
+    <link rel="stylesheet" href="./css/gestion_usuarios.css" />
 </head>
 <body>
     <%- include('partials/header.ejs') %>
@@ -13,7 +13,7 @@
         <h1>Gestión de Usuarios</h1>
 
         <div class="user-management">
-            <button class="add-btn" onclick="window.location.href='/register'">
+            <button class="add-btn" onclick="window.location.href='/app/register'">
                 Agregar Usuario
             </button>
 
@@ -44,7 +44,7 @@
                         </td>
                         <td>
                             <form
-                                action="/usuarios/eliminar/<%= usuario.persona_id %>"
+                                action="/app/usuarios/eliminar/<%= usuario.persona_id %>"
                                 method="POST"
                                 onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');"
                             >

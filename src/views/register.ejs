@@ -4,36 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro</title>
-    <link rel="stylesheet" href="/css/register.css" />
+    <link rel="stylesheet" href="./css/register.css" />
   </head>
-  <header>
-    <nav>
-        <ul class="nav-left">
-            <li>
-                <a href="/home">
-                    <img
-                        src="/images/LogoGuevara.png"
-                        alt="LogoGuevara"
-                        class="logo"
-                    />
-                    Colegio Dr. Ernesto Guevara
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <ul class="nav-right">
-        <li>
-            <a href="/perfil">
-                <img
-                    src="/images/usuarios/<%= usuario.foto_perfil %>"
-                    alt="Foto de Perfil"
-                    class="profile-image"
-                />
-                <span class="user-name"><%= usuario.nombre %></span>
-            </a>
-        </li>
-    </ul>
-  </header>
+
+  <%- include('partials/header.ejs') %>
+
   <body>
 
     <%- include('partials/sidebar.ejs') %>

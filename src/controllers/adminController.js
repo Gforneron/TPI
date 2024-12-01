@@ -136,7 +136,7 @@ admincontroller.guardarNotas = async (req, res) => {
     }
 
     // Redirigir o responder con éxito
-    res.redirect(`/gestion_materias/${cursoId}`);
+    res.redirect(`/app/gestion_materias/${cursoId}`);
   } catch (error) {
     console.error("Error al guardar las notas:", error.message);
     res.status(500).send("Error en el servidor al guardar las notas");

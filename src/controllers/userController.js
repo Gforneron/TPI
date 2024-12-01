@@ -32,7 +32,7 @@ userController.updatePerfil = async (req, res) => {
       await usuario.save();
       req.session.usuarioLogueado = usuario;
 
-      return res.redirect("/perfil");
+      return res.redirect("/app/perfil");
     } else {
       res.status(404).render("error", { message: "Usuario no encontrado." });
     }
@@ -78,7 +78,7 @@ userController.loginUser = async (req, res) => {
 
     if (isMatch) {
       req.session.usuarioLogueado = usuario;
-      return res.redirect("/home");
+      return res.redirect("/app/home");
     } else {
       return res.render("login", {
         error: "Contraseña incorrecta.",
@@ -134,7 +134,7 @@ userController.newUser = async (req, res) => {
     // Si no hay errores, guarda el usuario
     if (errores.isEmpty()) {
       await db.Persona.create(dataUser);
-      return res.redirect("gestion_usuarios");
+      return res.redirect("/app/gestion_usuarios");
     } else {
       // Mapea los errores y renderiza la vista con los errores específicos
       return res.render("register", {
@@ -158,7 +158,7 @@ userController.cerrar = (req, res) => {
         .status(500)
         .render("error", { message: "Error al cerrar sesión." });
     }
-    return res.redirect("/"); // Redirige a la página principal
+    return res.redirect("/app/"); // Redirige a la página principal
   });
 };
 
@@ -170,7 +170,7 @@ userController.deleteUser = async (req, res) => {
 
     if (usuario) {
       await usuario.destroy();
-      return res.redirect("/gestion_usuarios"); // Redirige a la gestión de usuarios
+      return res.redirect("/app/gestion_usuarios"); // Redirige a la gestión de usuarios
     } else {
       return res
         .status(404)

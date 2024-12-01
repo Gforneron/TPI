@@ -3,7 +3,7 @@
   <head>
     <%- include('partials/head.ejs') %>
     <title>Pagina Principal</title>
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
         <!-- Trae el header --> 
@@ -27,11 +27,11 @@
           width="560"
           height="315"
             <% if (usuario.tipo_usuario_id === 1) { %>
-              src="/videos/Video-alumno.mp4"
+              src="./videos/Video-alumno.mp4"
             <% } else if (usuario.tipo_usuario_id === 3 ) { %>
-              src="/videos/Administrador.mp4"
+              src="./videos/Administrador.mp4"
             <% } else if (usuario.tipo_usuario_id === 2 ) { %>
-              src="/videos/alumnado.mp4"
+              src="./videos/alumnado.mp4"
               <% } %>
           title="Video explicativo"
           frameborder="0"
@@ -41,7 +41,7 @@
         </iframe>
       </div>
     </main>
-        <!-- Trae la Barra lateral --> 
+        <!-- Trae el pie de pagina --> 
         <%- include('partials/footer.ejs') %>
     
   </body>

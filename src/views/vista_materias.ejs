@@ -3,7 +3,7 @@
   <head>
     <%- include('partials/head.ejs') %>
     <title>Vista Materias</title>
-    <link rel="stylesheet" href="/css/vista_materias.css" />
+    <link rel="stylesheet" href="./css/vista_materias.css" />
   </head>
   <body>
     <%- include('partials/header.ejs') %> <%- include('partials/sidebar.ejs') %>
@@ -16,7 +16,7 @@
         <form
           id="grades-form"
           method="POST"
-          action="/curso/<%= curso.curso_id %>/materia/<%= materia.materia_id %>"
+          action="/app/curso/<%= curso.curso_id %>/materia/<%= materia.materia_id %>"
         >
           <table class="students-table">
             <thead>

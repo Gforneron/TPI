@@ -3,7 +3,7 @@
 <head>
     <%- include('partials/head.ejs') %>
     <title>Gestión Curso</title>
-    <link rel="stylesheet" href="/css/gestion_curso.css" />
+    <link rel="stylesheet" href="./css/gestion_curso.css" />
 </head>
 <body>
     <!-- Trae el header -->
@@ -17,7 +17,7 @@
         <div class="courses-grid">
             <% cursos.forEach(curso => { %>
                 <div class="course">
-                    <a href="gestion_materias/<%= curso.curso_id %> "">
+                    <a href="/app/gestion_materias/<%= curso.curso_id %> "">
                         <h3><%= curso.nombre_curso %></h3>
                     </a>
                 </div>

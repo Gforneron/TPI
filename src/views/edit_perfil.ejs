@@ -3,7 +3,7 @@
   <head>
     <%- include('partials/head.ejs') %>
     <title>Editar Perfil</title>
-    <link rel="stylesheet" href="/css/perfil.css" />
+    <link rel="stylesheet" href="./css/perfil.css" />
   </head>
 
   <body>
@@ -16,7 +16,7 @@
     <main class="content-container">
       <h1>Editar Perfil</h1>
       <form
-        action="/edit_perfil/<%=usuario.persona_id%>"
+        action="/app/edit_perfil/<%=usuario.persona_id%>"
         method="POST"
         class="profile-form"
         enctype="multipart/form-data"
@@ -26,7 +26,7 @@
         <div class="form-group">
           <label for="profile-picture">Foto de Perfil Actual:</label>
           <img
-            src="/images/usuarios/<%=usuario.foto_perfil%>"
+            src="./images/usuarios/<%=usuario.foto_perfil%>"
             alt="Foto de Perfil"
             id="profile-image"
 
@@ -95,7 +95,7 @@
         <!-- Botones -->
         <div class="form-actions">
           <button type="submit" class="btn-submit">Actualizar Perfil</button>
-          <a href="/perfil" class="btn-cancel">Cancelar</a>
+          <a href="/app/perfil" class="btn-cancel">Cancelar</a>
         </div>
       </form>
     </main>

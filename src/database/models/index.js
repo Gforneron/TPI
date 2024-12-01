@@ -4,7 +4,7 @@ const config = require('../config');
 const sequelize = new Sequelize(
   'startech',
   'root',
-  null,
+  "F21904405n#",
   {
     host: config.host,
     dialect: 'mysql',
