@@ -1,6 +1,12 @@
 /* Estilo general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
@@ -9,80 +15,102 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-}
-
-/* Estilos del header */
-header {
+  }
+  
+  header {
     width: 100%;
     background-color: #d13030;
-    padding: 10px 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
+    padding: 1rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* Alineación ajustada solo para logo y texto */
     align-items: center;
     z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-nav ul {
+    box-sizing: border-box;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  ul {
     list-style-type: none;
+  }
+  
+  /* Logo y texto del header */
+  .nav-left {
     display: flex;
     align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li a {
-    color: white;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    font-weight: bold;
-}
-
-/* Logo */
-.logo {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .logo {
     height: 3rem;
     width: auto;
-    margin-right: 20px;
-    border-radius: 20px;
-}
-
-/* Estilo del contenedor de login */
-.login-container {
+    margin-right: 10px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+  
+  .logo:hover {
+    transform: scale(1.1);
+  }
+  
+  .logo-text {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+    transition: color 0.3s ease;
+  }
+  
+  .logo-container:hover .logo-text {
+    color: #000000; /* Cambia a negro en hover */
+  }
+  
+  .logo-container:active .logo-text {
+    transform: scale(0.95); /* Simula un efecto de clic */
+  }
+  
+  /* Estilo del contenedor de login */
+  .login-container {
     background-color: white;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 350px;
-    margin-top: 120px; /* Ajuste para que quede debajo del header */
-}
-
-.login-container h2 {
+    margin-top: 1rem; 
+  }
+  
+  .login-container h2 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 24px;
     color: #333;
-}
-
-label {
+  }
+  
+  label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
     color: #555;
-}
-
-input[type="email"],
-input[type="password"] {
+  }
+  
+  input[type="email"],
+  input[type="password"] {
     width: 94%;
     padding: 12px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-}
-
-#button {
+  }
+  
+  #button {
     width: 100%;
     padding: 12px;
     background-color: #d13030;
@@ -91,14 +119,14 @@ input[type="password"] {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
-}
-
-#button:hover {
+  }
+  
+  #button:hover {
     background-color: #af4c4c;
-}
-
-/* Nueva sección de no cuenta */
-.no-account-container {
+  }
+  
+  /* Nueva sección de no cuenta */
+  .no-account-container {
     background-color: white;
     padding: 20px;
     margin-top: 20px;
@@ -106,67 +134,109 @@ input[type="password"] {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 350px;
-}
-
-.no-account-container p {
+  }
+  
+  .no-account-container p {
     font-size: 16px;
     color: #555;
     margin-bottom: 10px;
-}
-
-.contact-link {
+  }
+  
+  .contact-link {
     color: #d13030;
     text-decoration: none;
     font-weight: bold;
-}
-
-.contact-link:hover {
+  }
+  
+  .contact-link:hover {
     text-decoration: underline;
-}
-
-/* Responsividad */
-@media (max-width: 768px) {
-    .login-container, .no-account-container {
-        width: 80%;
-        padding: 20px;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 1024px) {
+    /* Tablets y laptops pequeñas */
+    .login-container,
+    .no-account-container {
+      width: 70%;
     }
-    
-    .login-container h2 {
-        font-size: 20px;
-    }
-
-    input[type="email"],
-    input[type="password"],
-    #button {
-        padding: 10px;
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    .login-container, .no-account-container {
-        width: 90%;
-        padding: 15px;
-    }
-
+  
     header {
-        padding: 10px;
-        text-align: center;
+      padding: 0.8rem;
     }
-
+  
     .logo {
-        height: 2.5rem;
-        margin-right: 10px;
+      height: 2.8rem;
     }
-
+  
+    .logo-text {
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    /* Tablets y pantallas medianas */
+    .login-container,
+    .no-account-container {
+      width: 80%;
+      padding: 20px;
+    }
+  
+    header {
+      flex-direction: column;
+      text-align: center;
+      padding: 1rem;
+    }
+  
+    .nav-left {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .logo-text {
+      font-size: 18px;
+    }
+  
     .login-container h2 {
-        font-size: 18px;
+      font-size: 20px;
     }
-
+  
     input[type="email"],
     input[type="password"],
     #button {
-        padding: 8px;
-        font-size: 14px;
+      padding: 10px;
+      font-size: 14px;
     }
-}
+  }
+  
+  @media (max-width: 480px) {
+    /* Smartphones */
+    .login-container,
+    .no-account-container {
+      width: 90%;
+      padding: 15px;
+    }
+  
+    header {
+      padding: 10px;
+    }
+  
+    .logo {
+      height: 2.5rem;
+    }
+  
+    .logo-text {
+      font-size: 16px;
+    }
+  
+    .login-container h2 {
+      font-size: 18px;
+    }
+  
+    input[type="email"],
+    input[type="password"],
+    #button {
+      padding: 8px;
+      font-size: 14px;
+    }
+  }
+  

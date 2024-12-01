@@ -22,9 +22,9 @@
             <td colspan="2">Año:</td>
             <td colspan="2">2024</td>
           </tr>
+          <!-- Ciclo de materias -->
           <tr>
             <td colspan="2">Ciclo Superior de la ESO</td>
-            <!-- Ciclo de materias -->
             <% usuario.curso.materias.forEach((materia) => { %>
             <td><%= materia.nombre_materia %></td>
             <% }) %>
@@ -35,40 +35,58 @@
             <td rowspan="3">Primer cuatrimestre</td>
             <td>1° informe</td>
             <% usuario.curso.materias.forEach((materia) => { %>
-            <td><%= materia.notas[0]?.nota|| '-' %></td>
+            <td>
+              <%= materia.notas.find(n => n.cuatrimestre === 1 && n.informe ===
+              1)?.nota || '-' %>
+            </td>
             <% }) %>
           </tr>
           <tr>
             <td>2° informe</td>
             <% usuario.curso.materias.forEach((materia) => { %>
-            <td><%= materia.notas[1]?.nota || '-' %></td>
+            <td>
+              <%= materia.notas.find(n => n.cuatrimestre === 1 && n.informe ===
+              2)?.nota || '-' %>
+            </td>
             <% }) %>
           </tr>
           <tr>
             <td>NOTA</td>
             <% usuario.curso.materias.forEach((materia) => { %>
-            <td><%= materia.notas[4]?.nota || '-' %></td>
+            <td>
+              <%= materia.notas.find(n => n.cuatrimestre === 1 && n.informe ===
+              3)?.nota || '-' %>
+            </td>
             <% }) %>
           </tr>
-          <!-- Segundo cuatrimestre -->
 
+          <!-- Segundo cuatrimestre -->
           <tr>
             <td rowspan="3">Segundo cuatrimestre</td>
             <td>1° informe</td>
             <% usuario.curso.materias.forEach((materia) => { %>
-            <td><%= materia.notas[2]?.nota || '-' %></td>
+            <td>
+              <%= materia.notas.find(n => n.cuatrimestre === 2 && n.informe ===
+              1)?.nota || '-' %>
+            </td>
             <% }) %>
           </tr>
           <tr>
             <td>2° informe</td>
             <% usuario.curso.materias.forEach((materia) => { %>
-            <td><%= materia.notas[3]?.nota || '-' %></td>
+            <td>
+              <%= materia.notas.find(n => n.cuatrimestre === 2 && n.informe ===
+              2)?.nota || '-' %>
+            </td>
             <% }) %>
           </tr>
           <tr>
             <td>NOTA</td>
             <% usuario.curso.materias.forEach((materia) => { %>
-            <td><%= materia.notas[5]?.nota || '-' %></td>
+            <td>
+              <%= materia.notas.find(n => n.cuatrimestre === 2 && n.informe ===
+              3)?.nota || '-' %>
+            </td>
             <% }) %>
           </tr>
         </tbody>
